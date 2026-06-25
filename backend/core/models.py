@@ -1,3 +1,6 @@
+"""
+Models for the Alan Foods e-commerce application.
+"""
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
