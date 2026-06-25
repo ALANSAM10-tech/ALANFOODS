@@ -1,0 +1,451 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ALAN FOODS | Inventory Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#fffafa",
+                    "outline-variant": "#e7bdb8",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#dcd9d9",
+                    "primary": "#ba0013",
+                    "error-container": "#ffdad6",
+                    "inverse-primary": "#ffb4ab",
+                    "surface-container": "#f0eded",
+                    "surface-tint": "#c00014",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#7cfd89",
+                    "surface-container-highest": "#e5e2e1",
+                    "primary-container": "#e31e24",
+                    "on-primary-fixed-variant": "#93000d",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#e5e2dd",
+                    "tertiary-container": "#757470",
+                    "on-tertiary-fixed-variant": "#474743",
+                    "secondary": "#006e25",
+                    "secondary-fixed-dim": "#5fe070",
+                    "surface-bright": "#fcf9f8",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#1c1c19",
+                    "on-secondary-container": "#007528",
+                    "on-primary-fixed": "#410002",
+                    "tertiary-fixed-dim": "#c8c6c2",
+                    "outline": "#926f6b",
+                    "tertiary": "#5c5b58",
+                    "on-background": "#1c1b1b",
+                    "surface": "#fcf9f8",
+                    "primary-fixed-dim": "#ffb4ab",
+                    "surface-container-low": "#f6f3f2",
+                    "on-surface": "#1c1b1b",
+                    "on-secondary-fixed-variant": "#00531a",
+                    "surface-container-high": "#eae7e7",
+                    "secondary-container": "#7cfd89",
+                    "background": "#fcf9f8",
+                    "surface-variant": "#e5e2e1",
+                    "on-secondary-fixed": "#002106",
+                    "inverse-surface": "#313030",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#5d3f3c",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#ffdad6",
+                    "on-tertiary-container": "#fefbf6",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#f3f0ef"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "16px",
+                    "xl": "80px",
+                    "margin-desktop": "64px",
+                    "base": "4px",
+                    "margin-mobile": "16px",
+                    "xs": "8px",
+                    "md": "24px",
+                    "lg": "48px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"],
+                    "body-md": ["Work Sans"],
+                    "label-md": ["Work Sans"],
+                    "label-sm": ["Work Sans"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"],
+                    "body-lg": ["Work Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background-color: #fcf9f8;
+            color: #1c1b1b;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sidebar-item-active {
+            @apply bg-primary-container text-on-primary-container;
+        }
+        .luxury-shadow {
+            box-shadow: 0px 12px 24px rgba(0,0,0, 0.04);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e5e2e1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #dcd9d9;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-surface flex flex-col border-r border-surface-container-highest h-screen shrink-0">
+<div class="p-md">
+<h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">ALAN FOODS</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Admin Portal</p>
+</div>
+<nav class="flex-1 mt-md px-sm space-y-1">
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined mr-3 group-hover:text-primary">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center px-4 py-3 bg-primary-container text-on-primary-container rounded-lg group" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined mr-3 group-hover:text-primary">shopping_bag</span>
+<span class="font-label-md text-label-md">Orders</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined mr-3 group-hover:text-primary">group</span>
+<span class="font-label-md text-label-md">Customers</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined mr-3 group-hover:text-primary">assessment</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<div class="pt-xl">
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined mr-3 group-hover:text-primary">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+</nav>
+<div class="p-md mt-auto border-t border-surface-container-highest">
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a high-end food quality manager, soft lighting, clean white background, wearing a charcoal business vest over a crisp white shirt, minimalist and authoritative vibe, high-resolution photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_cOVJ1CyvgCbIEenIOwpXQqCulT7GBeuy5Oc4x8VRxe1uhfwDg5rRiQPT9hm0CeMOKsJp2J1jyNBckJ8rGTr2w1wlglBH8EFV2BxImTEU2gG006IWcVb7fR_WpiuRPgnToVjdjgLZqZe1yzEidZw_q2Iitur_V2c1WHKmT7gx5I5nvwRZ0vRTlssRMuDnsw4V9Q5-VBFcJ_TpSy73zV0_75Fd-GKwH-IK5ZoWpGi6UCzS0ZConSAyo8llq50VYjKV0TSFylMH">
+</div>
+<div class="ml-3">
+<p class="font-label-md text-label-md text-on-surface">Artisan Admin</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Quality Control</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-screen overflow-y-auto bg-surface-container-low">
+<!-- Header -->
+<header class="sticky top-0 z-10 bg-surface flex items-center justify-between h-20 px-margin-desktop border-b border-surface-container-highest luxury-shadow">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Inventory Management</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Monitor and manage your premium artisan stock.</p>
+</div>
+<div class="flex items-center space-x-md">
+<button class="flex items-center px-md py-sm bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all shadow-sm">
+<span class="material-symbols-outlined mr-2">add</span>
+                    Add New Product
+                </button>
+</div>
+</header>
+<!-- Content Body -->
+<div class="p-margin-desktop space-y-md max-w-[1400px]">
+<!-- Key Metrics Grid -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="bg-surface p-md rounded-xl luxury-shadow border border-surface-container-highest flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<p class="font-label-md text-label-md text-on-surface-variant">Total SKUs</p>
+<span class="material-symbols-outlined text-secondary">inventory</span>
+</div>
+<div>
+<h3 class="font-display-lg text-headline-lg mt-xs">1,248</h3>
+<p class="font-label-sm text-label-sm text-secondary mt-1 flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-1">trending_up</span>
+                            +12 this month
+                        </p>
+</div>
+</div>
+<div class="bg-surface p-md rounded-xl luxury-shadow border border-surface-container-highest flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<p class="font-label-md text-label-md text-on-surface-variant">Low Stock Items</p>
+<span class="material-symbols-outlined text-amber-500">warning</span>
+</div>
+<div>
+<h3 class="font-display-lg text-headline-lg mt-xs">24</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Requires reorder</p>
+</div>
+</div>
+<div class="bg-surface p-md rounded-xl luxury-shadow border border-surface-container-highest flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<p class="font-label-md text-label-md text-on-surface-variant">Out of Stock</p>
+<span class="material-symbols-outlined text-primary">block</span>
+</div>
+<div>
+<h3 class="font-display-lg text-headline-lg mt-xs text-primary">8</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Impact on sales: High</p>
+</div>
+</div>
+<div class="bg-surface p-md rounded-xl luxury-shadow border border-surface-container-highest flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<p class="font-label-md text-label-md text-on-surface-variant">Inventory Value</p>
+<span class="material-symbols-outlined text-secondary">payments</span>
+</div>
+<div>
+<h3 class="font-display-lg text-headline-lg mt-xs">$42,150</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Based on retail price</p>
+</div>
+</div>
+</section>
+<!-- Table Actions -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-md bg-surface p-sm rounded-xl border border-surface-container-highest">
+<div class="flex-1 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-transparent focus:border-primary focus:ring-0 rounded-lg font-body-md text-body-md transition-all" placeholder="Search products, SKUs..." type="text">
+</div>
+<div class="flex items-center space-x-sm">
+<select class="bg-surface-container-low border-transparent focus:border-primary focus:ring-0 rounded-lg font-label-md text-label-md py-2 px-md cursor-pointer transition-all">
+<option>All Categories</option>
+<option>Nuts</option>
+<option>Spices</option>
+<option>Dry Fruits</option>
+</select>
+<select class="bg-surface-container-low border-transparent focus:border-primary focus:ring-0 rounded-lg font-label-md text-label-md py-2 px-md cursor-pointer transition-all">
+<option>All Status</option>
+<option>In Stock</option>
+<option>Low Stock</option>
+<option>Out of Stock</option>
+</select>
+<button class="p-2 hover:bg-surface-container-high rounded-lg transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">filter_list</span>
+</button>
+</div>
+</section>
+<!-- Product Table -->
+<section class="bg-surface rounded-xl luxury-shadow border border-surface-container-highest overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-surface-container-highest">
+<th class="px-md py-md font-label-md text-label-md text-on-surface-variant">Product</th>
+<th class="px-md py-md font-label-md text-label-md text-on-surface-variant">Category</th>
+<th class="px-md py-md font-label-md text-label-md text-on-surface-variant">SKU</th>
+<th class="px-md py-md font-label-md text-label-md text-on-surface-variant">Stock Level</th>
+<th class="px-md py-md font-label-md text-label-md text-on-surface-variant text-right">Price</th>
+<th class="px-md py-md font-label-md text-label-md text-on-surface-variant text-center">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-highest">
+<!-- Product Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-md">
+<div class="flex items-center">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg mr-3 overflow-hidden border border-surface-container-highest flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="High-resolution close-up of organic premium California Almonds, lightly roasted, presented on a minimalist white ceramic surface, warm soft natural lighting, high-end food commercial style, clean and appetizing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATvK-i3pj8kv5sJSmNEOtpohTP5JucFgLy4AOqAyv8c_fXxMcDS44gSuXbc_w2sS1qtwCl8KIVwWTEWg8NZbQ73GZetqTlShjH5_QxNqZemXQpu0YIXG1nZKzZB7vmFoRSUIiOZ-8DZZNTlE7xUzYqD3ItRxkM5nwaj8oz2Y9xI8KW00pE5fa25kHFkOI56Lfu3hNAFw-p53zc7Xg0t2S0F-m_qymzRhj2YxWr2swKSvbNQBS5IAIQzbDxhrOiLgOrttX8pQSo">
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Premium California Almonds</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Roasted &amp; Unsalted</p>
+</div>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-tertiary-fixed text-on-tertiary-fixed-variant">Nuts</span>
+</td>
+<td class="px-md py-md font-label-sm text-label-sm text-on-surface-variant">NUT-ALM-001</td>
+<td class="px-md py-md">
+<div class="flex items-center">
+<div class="flex-1 h-1.5 bg-surface-container-highest rounded-full max-w-[100px] mr-2 overflow-hidden">
+<div class="bg-secondary h-full" style="width: 85%;"></div>
+</div>
+<span class="px-2 py-1 rounded bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-wider">In Stock</span>
+</div>
+</td>
+<td class="px-md py-md text-right font-label-md text-label-md text-on-surface">$24.99</td>
+<td class="px-md py-md text-center">
+<div class="flex justify-center space-x-2">
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Product Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-md">
+<div class="flex items-center">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg mr-3 overflow-hidden border border-surface-container-highest flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Vibrant red Kashmiri Chili Powder in a small minimalist stone bowl, rich texture, bright color contrast against a clean parchment background, luxury spice photography style, soft focus background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATJMUa4gxTvNCZkeuNw8upHavs9niPia3VxwhCMl4tZ_Kl3lCee3AwT3OyV5OQw9-MA7hvP3qbrpQcY2n5iCEenOvPXshC22KkNFQgsLxlS9fNGvBI8xmWkFm6XLhmS93Zt7UDVZqACPuHMTWn_lomBcj7lvrWOJLuL4cTimmJEaWGvHZd35TfF01L6cIVhDyRKWcxf4C-m8j6qJmpTXoMtEFqFU0FK87goVlhdOqRQkLrT80_nFSz86gcGfXS2SUR5yZiWMLP">
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Kashmiri Red Chili Powder</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Sourced from Kerala</p>
+</div>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-tertiary-fixed text-on-tertiary-fixed-variant">Spices</span>
+</td>
+<td class="px-md py-md font-label-sm text-label-sm text-on-surface-variant">SPI-KCH-042</td>
+<td class="px-md py-md">
+<div class="flex items-center">
+<div class="flex-1 h-1.5 bg-surface-container-highest rounded-full max-w-[100px] mr-2 overflow-hidden">
+<div class="bg-amber-500 h-full" style="width: 15%;"></div>
+</div>
+<span class="px-2 py-1 rounded bg-amber-100 text-amber-800 text-[10px] font-bold uppercase tracking-wider">Low Stock</span>
+</div>
+</td>
+<td class="px-md py-md text-right font-label-md text-label-md text-on-surface">$12.50</td>
+<td class="px-md py-md text-center">
+<div class="flex justify-center space-x-2">
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Product Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-md">
+<div class="flex items-center">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg mr-3 overflow-hidden border border-surface-container-highest flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Dried organic apricots, sun-dried, vibrant orange color, arranged neatly on a white marble slab, minimalist aesthetic, bright airy lighting, high-quality organic food branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCttIh5nx3e8QT935FxVzi3T2PdPVpxMCIgw7HVN0J4R83ijTWSSMwJwcMCGE9ZjR-VGFIMvYwMhEn1NQHJ36p9JtOx0ZCpGcHKM1OEkGMc5lM33pGk4Vgxxb6nhqY56C6yaCiDGM9i7rXoBDvg53k03417o5LdvLbxdZhS2_p03cORG224nRyZ7IT1NSvwi4LPhva4CLNQPL6tQpzjd187gMAtb7muykKzVgHqtKL7HtqmGW6cWQpwFPnX6Fo0UuW_jcltH99q">
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Organic Sun-Dried Apricots</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Sulfur-free, Pitted</p>
+</div>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-tertiary-fixed text-on-tertiary-fixed-variant">Dry Fruits</span>
+</td>
+<td class="px-md py-md font-label-sm text-label-sm text-on-surface-variant">DFR-APR-088</td>
+<td class="px-md py-md">
+<div class="flex items-center">
+<div class="flex-1 h-1.5 bg-surface-container-highest rounded-full max-w-[100px] mr-2 overflow-hidden">
+<div class="bg-primary h-full" style="width: 0%;"></div>
+</div>
+<span class="px-2 py-1 rounded bg-error-container text-on-error-container text-[10px] font-bold uppercase tracking-wider">Out of Stock</span>
+</div>
+</td>
+<td class="px-md py-md text-right font-label-md text-label-md text-on-surface">$18.00</td>
+<td class="px-md py-md text-center">
+<div class="flex justify-center space-x-2">
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Product Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-md">
+<div class="flex items-center">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg mr-3 overflow-hidden border border-surface-container-highest flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Whole black peppercorns in a clear high-end glass jar, focus on texture and deep black sheen, studio lighting, clean minimalist composition, high-end culinary presentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT0u-T6PVCv73wzLwBFjlMyBXKXLYogbo9NC4KVZMtwjpr8OLeqShx5Ii8ZaLtkDNhhD1lSJFf-Xjdp2dNtMzu5zBAoWX3nT5KJ2Ujcgwax2HxpQ6Wfws9U08_uhk8ckUlPlxw5tqt9OHmVhjPdW5v0_vEndQr4mo-GqfBZMahf4SzsdW3x5iKGAVqK6QMTo9xgYBSxf7AItvRrg6Gz4uz7DCPd4IZ4Gh6FIIu26DW_bRENxtzARWYrrArzMYIoZvM7vOV_E8z">
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Tellicherry Black Pepper</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Whole Peppercorns</p>
+</div>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-tertiary-fixed text-on-tertiary-fixed-variant">Spices</span>
+</td>
+<td class="px-md py-md font-label-sm text-label-sm text-on-surface-variant">SPI-PPR-015</td>
+<td class="px-md py-md">
+<div class="flex items-center">
+<div class="flex-1 h-1.5 bg-surface-container-highest rounded-full max-w-[100px] mr-2 overflow-hidden">
+<div class="bg-secondary h-full" style="width: 60%;"></div>
+</div>
+<span class="px-2 py-1 rounded bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-wider">In Stock</span>
+</div>
+</td>
+<td class="px-md py-md text-right font-label-md text-label-md text-on-surface">$15.75</td>
+<td class="px-md py-md text-center">
+<div class="flex justify-center space-x-2">
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="bg-surface-container-low px-md py-sm flex items-center justify-between border-t border-surface-container-highest">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Showing 1-4 of 1,248 products</p>
+<div class="flex space-x-xs">
+<button class="px-3 py-1 border border-surface-container-highest rounded hover:bg-surface transition-all font-label-sm text-label-sm">Previous</button>
+<button class="px-3 py-1 bg-primary text-on-primary rounded font-label-sm text-label-sm">1</button>
+<button class="px-3 py-1 border border-surface-container-highest rounded hover:bg-surface transition-all font-label-sm text-label-sm">2</button>
+<button class="px-3 py-1 border border-surface-container-highest rounded hover:bg-surface transition-all font-label-sm text-label-sm">3</button>
+<button class="px-3 py-1 border border-surface-container-highest rounded hover:bg-surface transition-all font-label-sm text-label-sm">Next</button>
+</div>
+</div>
+</section>
+</div>
+<footer class="mt-auto px-margin-desktop py-lg bg-surface-container-highest border-t border-surface-container-highest">
+<div class="flex flex-col md:flex-row justify-between items-center opacity-60">
+<p class="font-label-sm text-label-sm">© 2024 ALAN FOODS. Purity in every bite.</p>
+<div class="flex space-x-md mt-sm md:mt-0">
+<a class="font-label-sm text-label-sm hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="font-label-sm text-label-sm hover:text-primary transition-colors" href="#">Support</a>
+<a class="font-label-sm text-label-sm hover:text-primary transition-colors" href="#">Wholesale Portal</a>
+</div>
+</div>
+</footer>
+</main>
+<script>
+        // Simple micro-interaction for rows
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('click', () => {
+                // Future expansion: open detail modal
+                console.log('Row clicked');
+            });
+        });
+    </script>
+</body></html>

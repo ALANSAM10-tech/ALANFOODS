@@ -1,0 +1,559 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Product Catalog | ALAN FOODS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#757470",
+                        "surface-dim": "#dcd9d9",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#fefbf6",
+                        "primary-fixed": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#007528",
+                        "on-secondary-fixed": "#002106",
+                        "secondary-container": "#7cfd89",
+                        "tertiary": "#5c5b58",
+                        "tertiary-fixed": "#e5e2dd",
+                        "on-primary-fixed": "#410002",
+                        "on-surface": "#1c1b1b",
+                        "surface-bright": "#fcf9f8",
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary-fixed": "#7cfd89",
+                        "inverse-primary": "#ffb4ab",
+                        "surface-container": "#f0eded",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#ba0013",
+                        "inverse-surface": "#313030",
+                        "error": "#ba1a1a",
+                        "primary-container": "#e31e24",
+                        "on-tertiary-fixed": "#1c1c19",
+                        "tertiary-fixed-dim": "#c8c6c2",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#e7bdb8",
+                        "on-primary-fixed-variant": "#93000d",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "primary-fixed-dim": "#ffb4ab",
+                        "surface-tint": "#c00014",
+                        "surface-container-high": "#eae7e7",
+                        "surface": "#fcf9f8",
+                        "background": "#fcf9f8",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#5fe070",
+                        "secondary": "#006e25",
+                        "on-background": "#1c1b1b",
+                        "on-surface-variant": "#5d3f3c",
+                        "on-secondary-fixed-variant": "#00531a",
+                        "surface-variant": "#e5e2e1",
+                        "outline": "#926f6b",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-primary-container": "#fffafa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "16px",
+                        "margin-mobile": "16px",
+                        "xl": "80px",
+                        "margin-desktop": "64px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "xs": "8px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Work Sans"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Work Sans"],
+                        "body-lg": ["Work Sans"],
+                        "headline-lg": ["Playfair Display"],
+                        "label-sm": ["Work Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .product-card-shadow {
+            box-shadow: 0px 12px 24px rgba(0,0,0, 0.04);
+        }
+        .active-filter {
+            background-color: #ba0013;
+            color: white;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e5e2e1; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-white">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 shadow-sm bg-surface h-20 transition-all duration-300 border-b border-surface-container">
+<nav class="flex justify-between items-center w-full px-margin-desktop max-w-[1280px] mx-auto h-full">
+<div class="flex items-center gap-lg">
+<a class="font-headline-md text-headline-md font-bold text-primary tracking-tight" href="#">ALAN FOODS</a>
+<div class="hidden md:flex gap-md items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Shop All</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Nuts</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Dry Fruits</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Spices</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Gifts</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden lg:block">
+<input class="pl-10 pr-4 py-2 rounded-full border border-outline-variant bg-surface-container-low focus:ring-1 focus:ring-primary focus:border-primary transition-all w-64 text-sm outline-none" placeholder="Search purity..." type="text">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-2 hover:bg-surface-container rounded-full transition-colors relative">
+<span class="material-symbols-outlined text-primary" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute top-0 right-0 bg-primary text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">2</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="person">person</span>
+</button>
+<button class="md:hidden p-2 hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+</button>
+</div>
+</div>
+</nav>
+</header>
+<main class="pt-24 pb-xl max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Section / Category Header -->
+<section class="relative rounded-xl overflow-hidden mb-lg h-[400px] flex items-center">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="A top-down aesthetic photograph of premium organic nuts and aromatic spices scattered artistically on a natural linen tablecloth. Soft morning sunlight filters through a nearby window, creating gentle shadows and highlights on the textured surface. The scene is dominated by earthy browns, vibrant greens, and rich reds, perfectly capturing the premium health-conscious identity of ALAN FOODS." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDihUBiL_3h0A8EXy8hYKinLfov81g4QoPRMHo2FRnMw00DDylFQ8cppTVmTJLEPQACHPQaf0agM2ndfIGJBFq5n1Jif8ldh6toda_NAAZBsWnYOlet5w7z8Szfj0Oou1eJz_dBN64EU9wvDlVq_Wd0eDpvExi6j2ElJHlbXFV7sS9OCMeWcF4wD7yPQPcuhw89sal1LfaaNquhxwNdb4xDqcv9kb6w5sQoLoKmuYtvGqsAnt9A_DFYADWDEOyliz-6WoNx5067')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-on-background/80 via-on-background/40 to-transparent"></div>
+</div>
+<div class="relative z-10 p-lg max-w-2xl text-white">
+<span class="inline-block px-3 py-1 bg-secondary text-white font-label-sm text-label-sm rounded-full mb-base">CERTIFIED ORGANIC</span>
+<h1 class="font-headline-lg text-headline-lg mb-sm">Premium Nuts, Whole Spices &amp; Dry Fruits</h1>
+<p class="font-body-lg text-body-lg opacity-90 mb-md">Sourced from the heart of heritage farms, our selection represents the pinnacle of purity and nutritional excellence for your family.</p>
+<div class="flex gap-sm">
+<button class="bg-primary text-white px-md py-3 font-label-md rounded-lg hover:bg-primary-container transition-all active:scale-[0.98]">Shop Bestsellers</button>
+<button class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-md py-3 font-label-md rounded-lg hover:bg-white/20 transition-all active:scale-[0.98]">Our Process</button>
+</div>
+</div>
+</section>
+<!-- Filters & Search Bar Mobile -->
+<section class="sticky top-20 z-40 bg-background/95 backdrop-blur-sm py-4 mb-md flex flex-col md:flex-row gap-md items-center justify-between border-b border-surface-container">
+<div class="flex gap-xs overflow-x-auto pb-2 md:pb-0 w-full md:w-auto custom-scrollbar no-scrollbar">
+<button class="px-6 py-2 rounded-full font-label-md text-label-md border border-outline active-filter whitespace-nowrap transition-all">All Products</button>
+<button class="px-6 py-2 rounded-full font-label-md text-label-md border border-outline hover:border-primary whitespace-nowrap transition-all">Premium Nuts</button>
+<button class="px-6 py-2 rounded-full font-label-md text-label-md border border-outline hover:border-primary whitespace-nowrap transition-all">Whole Spices</button>
+<button class="px-6 py-2 rounded-full font-label-md text-label-md border border-outline hover:border-primary whitespace-nowrap transition-all">Dried Fruits</button>
+<button class="px-6 py-2 rounded-full font-label-md text-label-md border border-outline hover:border-primary whitespace-nowrap transition-all">Gift Hampers</button>
+</div>
+<div class="flex items-center gap-sm w-full md:w-auto">
+<div class="flex items-center border border-outline rounded-lg px-3 py-1 bg-surface flex-1 md:flex-none">
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="filter_list">filter_list</span>
+<select class="border-none bg-transparent font-label-md text-label-md focus:ring-0 cursor-pointer">
+<option>Sort by: Featured</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+<option>Top Rated</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Product Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Product Card 1 -->
+<div class="group bg-white rounded-lg p-md transition-all duration-300 product-card-shadow flex flex-col border border-surface-container hover:border-primary/20">
+<div class="relative w-full aspect-square bg-surface-container-low rounded-lg mb-md overflow-hidden flex items-center justify-center p-md">
+<img class="object-contain w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="A macro studio shot of premium California Almonds. Each nut is perfectly shaped, showing beautiful wood-grain textures on their shells. The lighting is crisp and clear, emphasizing the golden-brown color against a minimalist off-white background, embodying the organic purity and health-focused luxury of the ALAN FOODS product line." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk2mfRNBd9krXAYhN5rR-V3-i1MNM-YWxlwrAk6TsZeSGTyukutpQ1iDKgL4jzB_ZNACi0kX7jiHDDjnkEJq4EizTVz5B8VXbdHNpVnes95wjRaqbrppQqLP1c9rE1MNkHNA4-NoqcRTzJNA8TJ0QZ-mWfaCEHvRad7Au8xU6qch9-ggsGDadrop711uS3OGVluqF3R6LSVm0ufjnSrvD6dXHa1HM8jNP8wWf1Otsq8xYNH1ImbN6_snBGsZxchmvt-n1504k3">
+<span class="absolute top-2 left-2 bg-secondary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">NEW</span>
+<button class="absolute top-2 right-2 p-1.5 bg-white/80 backdrop-blur rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">favorite</span>
+</button>
+</div>
+<span class="font-label-sm text-label-sm text-secondary-fixed-variant mb-xs">NUTS • IMPORTED</span>
+<h3 class="font-headline-md text-[18px] leading-6 mb-xs line-clamp-2">Premium Californian Almonds (Badam)</h3>
+<div class="flex items-center gap-1 mb-md">
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 0;">star</span>
+<span class="text-[12px] text-on-surface-variant ml-1">(42)</span>
+</div>
+<div class="mt-auto">
+<div class="flex flex-wrap gap-2 mb-md">
+<button class="text-[12px] font-medium border border-primary text-primary px-3 py-1 rounded hover:bg-primary hover:text-white transition-colors">250g</button>
+<button class="text-[12px] font-medium border border-outline text-on-surface-variant px-3 py-1 rounded hover:border-primary transition-colors">500g</button>
+<button class="text-[12px] font-medium border border-outline text-on-surface-variant px-3 py-1 rounded hover:border-primary transition-colors">1kg</button>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary-container">₹450.00</span>
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary-container active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[20px]" data-icon="shopping_basket">shopping_basket</span>
+<span class="font-label-sm text-label-sm px-1">Add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group bg-white rounded-lg p-md transition-all duration-300 product-card-shadow flex flex-col border border-surface-container hover:border-primary/20">
+<div class="relative w-full aspect-square bg-surface-container-low rounded-lg mb-md overflow-hidden flex items-center justify-center p-md">
+<img class="object-contain w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Vibrant, deep red Kashmiri Saffron strands artfully spilling from a traditional brass bowl onto a slate surface. The saffron strands are long and rich in color, indicating the highest grade of purity. The scene is lit with warm, focused lighting that creates a dramatic, high-end culinary atmosphere, emphasizing the premium spice collection of ALAN FOODS." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbWMi7T9-mcgZ8BpN5URH5kYtkF1jJYLO4YwdEIHZtdxj4mlhw0G57OFBdHfI5VeJuEBkb7P8Da9YN1bh8HyeUp6pK8p07sa_i-xgnsS95y0vlaZRLR6k3dJG14bUucmyzZsdIFZXySrhO1FbOSDPxJDtKUET3CcKDt0qlZF4nppEVF4zvuLjhnFQ77CUqAVmIApmWY8gfEs4XHtZFjZAcwD1Bl4d6P8TdeluJ1fptdqJh_Y4I9hhk0KlsD459bF_ph11kTWaY">
+<span class="absolute top-2 left-2 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">BESTSELLER</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary-fixed-variant mb-xs">SPICES • KASHMIR</span>
+<h3 class="font-headline-md text-[18px] leading-6 mb-xs line-clamp-2">Authentic Kashmiri Saffron (Kesar)</h3>
+<div class="flex items-center gap-1 mb-md">
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[12px] text-on-surface-variant ml-1">(128)</span>
+</div>
+<div class="mt-auto">
+<div class="flex flex-wrap gap-2 mb-md">
+<button class="text-[12px] font-medium border border-primary text-primary px-3 py-1 rounded">1g</button>
+<button class="text-[12px] font-medium border border-outline text-on-surface-variant px-3 py-1 rounded">5g</button>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary-container">₹320.00</span>
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary-container active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[20px]" data-icon="shopping_basket">shopping_basket</span>
+<span class="font-label-sm text-label-sm px-1">Add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group bg-white rounded-lg p-md transition-all duration-300 product-card-shadow flex flex-col border border-surface-container hover:border-primary/20">
+<div class="relative w-full aspect-square bg-surface-container-low rounded-lg mb-md overflow-hidden flex items-center justify-center p-md">
+<img class="object-contain w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Plump, sun-dried Medjool Dates displayed on a clean white ceramic platter. The dates have a glossy, caramel-colored exterior and look incredibly soft and sweet. Background is a soft-focus wooden kitchen counter with organic textures. The lighting is bright and natural, highlighting the healthy and wholesome nature of ALAN FOODS dry fruit selection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_vfNDJqp0dIdYlPGhpIB4Sy6RFVIq7tMba3G0DGK3tb0X8DkEwEL9MROfrcdXfBT2qy05_ZwlTaAeReZwAIYgz2LmW2NJcMwKmil3LnEKQoVej4sC49MdfEzO7zngMYO8Lo3y049YIPqa898gnCJK9jQ6u2tOn0bg1vXUxMVxh61d8bOSTlPIr0R_4eHBjwXZh8mlyC_-gW-X8cDAuV6wiJFY542A1jppNTwPXQSlQPbzwffTlU6P17k59hMYAdhGOE77_bjm">
+</div>
+<span class="font-label-sm text-label-sm text-secondary-fixed-variant mb-xs">DRY FRUITS • MEDJOOL</span>
+<h3 class="font-headline-md text-[18px] leading-6 mb-xs line-clamp-2">Organic Medjool Dates (Khajoor)</h3>
+<div class="flex items-center gap-1 mb-md">
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 0.5;">star_half</span>
+<span class="text-[12px] text-on-surface-variant ml-1">(89)</span>
+</div>
+<div class="mt-auto">
+<div class="flex flex-wrap gap-2 mb-md">
+<button class="text-[12px] font-medium border border-outline text-on-surface-variant px-3 py-1 rounded">250g</button>
+<button class="text-[12px] font-medium border border-primary text-primary px-3 py-1 rounded">500g</button>
+<button class="text-[12px] font-medium border border-outline text-on-surface-variant px-3 py-1 rounded">1kg</button>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary-container">₹680.00</span>
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary-container active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[20px]" data-icon="shopping_basket">shopping_basket</span>
+<span class="font-label-sm text-label-sm px-1">Add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group bg-white rounded-lg p-md transition-all duration-300 product-card-shadow flex flex-col border border-surface-container hover:border-primary/20">
+<div class="relative w-full aspect-square bg-surface-container-low rounded-lg mb-md overflow-hidden flex items-center justify-center p-md">
+<img class="object-contain w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Whole green cardamom pods and star anise arranged in a visually pleasing geometric pattern on a dark stone surface. The green of the cardamom is vibrant and the star anise shows its intricate wooden texture. Professional lighting highlights the freshness and aromatic qualities of these premium spices from ALAN FOODS." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBryeHZSIjfQ4fLa0jUMYv9XUHNw4qnocQ0l0cfmj5AeDajQ8VzoI8On4x-JO3gY_iggHUPXrRKaH71zhl7mhBq2nyxaDOf-oExGJhOUVUFwNLZZE2MdGVFb24VEYiMwZ33v-o05yQOET_P5Sc_uQmorVz5MNRl9wwSJG5c7Zete8GNIi3i05TWVMHcPi1M2xXFOkkCBwppnBiC1thkT8X95822Wa3RY50ENhWQ0eiG4wEXk_JfrlZi0ppuD9s8QUVGFq7FvnaE">
+</div>
+<span class="font-label-sm text-label-sm text-secondary-fixed-variant mb-xs">SPICES • WHOLE</span>
+<h3 class="font-headline-md text-[18px] leading-6 mb-xs line-clamp-2">Green Cardamom (Elaichi) - Extra Large</h3>
+<div class="flex items-center gap-1 mb-md">
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 0;">star</span>
+<span class="text-[12px] text-on-surface-variant ml-1">(56)</span>
+</div>
+<div class="mt-auto">
+<div class="flex flex-wrap gap-2 mb-md">
+<button class="text-[12px] font-medium border border-outline text-on-surface-variant px-3 py-1 rounded">50g</button>
+<button class="text-[12px] font-medium border border-primary text-primary px-3 py-1 rounded">100g</button>
+<button class="text-[12px] font-medium border border-outline text-on-surface-variant px-3 py-1 rounded">250g</button>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary-container">₹290.00</span>
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary-container active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[20px]" data-icon="shopping_basket">shopping_basket</span>
+<span class="font-label-sm text-label-sm px-1">Add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 5 (Repeated Style for Grid) -->
+<div class="group bg-white rounded-lg p-md transition-all duration-300 product-card-shadow flex flex-col border border-surface-container hover:border-primary/20">
+<div class="relative w-full aspect-square bg-surface-container-low rounded-lg mb-md overflow-hidden flex items-center justify-center p-md">
+<img class="object-contain w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Whole roasted Cashews piled elegantly on a handmade clay dish. The cashews are a perfect milky white with light golden toasted edges. The lighting is soft and diffused, creating a serene and healthy food photography vibe. The background is a clean, neutral textured surface, maintaining the minimalist ALAN FOODS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_PDhut2k3Ue4iOUc_gqcipy1lqSDxatcsLZlyyf3Yy88C6AQ-2bn1QwTXsVjjq001aHh6911hmnxDl7v04KuFgbCzb4-d-N_UzxO80GDp-_kMQmrQ9PeCev_39ZsevK0HWo8RriMSKZXJEZSsSJiGEwK7wCU23JFofmj-DAxN95vVywAqMRrIceUBEoi55_SvltIGu5Gfgm98Y-CcVh2W-fPLg9nUeSl12PYSENs6mgggJB_PRuwqe2zmF_YxXFzPNAYXTX4-">
+<span class="absolute top-2 left-2 bg-secondary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">ORGANIC</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary-fixed-variant mb-xs">NUTS • W240 GRADE</span>
+<h3 class="font-headline-md text-[18px] leading-6 mb-xs line-clamp-2">Premium Whole Cashews (Kaju)</h3>
+<div class="flex items-center gap-1 mb-md">
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[12px] text-on-surface-variant ml-1">(214)</span>
+</div>
+<div class="mt-auto">
+<div class="flex flex-wrap gap-2 mb-md">
+<button class="text-[12px] font-medium border border-outline text-on-surface-variant px-3 py-1 rounded">250g</button>
+<button class="text-[12px] font-medium border border-primary text-primary px-3 py-1 rounded">500g</button>
+<button class="text-[12px] font-medium border border-outline text-on-surface-variant px-3 py-1 rounded">1kg</button>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary-container">₹520.00</span>
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary-container active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[20px]" data-icon="shopping_basket">shopping_basket</span>
+<span class="font-label-sm text-label-sm px-1">Add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="group bg-white rounded-lg p-md transition-all duration-300 product-card-shadow flex flex-col border border-surface-container hover:border-primary/20">
+<div class="relative w-full aspect-square bg-surface-container-low rounded-lg mb-md overflow-hidden flex items-center justify-center p-md">
+<img class="object-contain w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Whole Pistachios in their partially open shells, showing the vibrant green nut inside. Arranged in a modern ceramic bowl on a light-colored wood surface. The image focuses on the fresh, crunchy texture of the nuts. High-key lighting highlights the natural greens and browns, reinforcing the wholesome purity of ALAN FOODS." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz9_Sd2seOjufQJwx8qWrG4r7QyqhKRbLeibIL25SkhEb3FGTxlbezcLm8JLk2CgwmHCfLoL0R1Od0RyurOVshHvd0hFx7BRRveprR28iv4e2Zz9noyTvzALrwK8ab_oxaGwea2qeaHydnXxhc3yaagpdyOl0TB0MoHuttyNTDq3kce57eb_iRsIv3yKScT3DuL0s61dJRk2Z7f25CX6xiHeLtRviyuN7oyut_EwTE5q-YqM6d8krAdjpg2Nl7mnkC6tPIe3Zc">
+</div>
+<span class="font-label-sm text-label-sm text-secondary-fixed-variant mb-xs">NUTS • ROASTED &amp; SALTED</span>
+<h3 class="font-headline-md text-[18px] leading-6 mb-xs line-clamp-2">Roasted &amp; Salted Pistachios (Pista)</h3>
+<div class="flex items-center gap-1 mb-md">
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 0;">star</span>
+<span class="text-[12px] text-on-surface-variant ml-1">(77)</span>
+</div>
+<div class="mt-auto">
+<div class="flex flex-wrap gap-2 mb-md">
+<button class="text-[12px] font-medium border border-primary text-primary px-3 py-1 rounded">250g</button>
+<button class="text-[12px] font-medium border border-outline text-on-surface-variant px-3 py-1 rounded">500g</button>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary-container">₹590.00</span>
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary-container active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[20px]" data-icon="shopping_basket">shopping_basket</span>
+<span class="font-label-sm text-label-sm px-1">Add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 7 -->
+<div class="group bg-white rounded-lg p-md transition-all duration-300 product-card-shadow flex flex-col border border-surface-container hover:border-primary/20">
+<div class="relative w-full aspect-square bg-surface-container-low rounded-lg mb-md overflow-hidden flex items-center justify-center p-md">
+<img class="object-contain w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Golden raisins glistening under bright light, presented in a minimal glass container. The raisins look translucent and succulent. The scene is bright, clean, and modern, with a focus on the health benefits of dried fruits. The background is a soft, warm neutral that complements the golden color of the fruit, consistent with ALAN FOODS branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbtajVMXigmZITTSTpp5S9A8esfASGOZyW8WcMl6HO0legGhN6GUd3ui96I7tkIrMV0qKXSilP5n_-LZgqJz9njHjYi9u7UPywzVyTbQlww9LX6pElz5gHjAFOWpk4nXU8mAwTdMycMoh8X1zI0Gzts3Vnvw05NQqE01YW4aby6Ujbv9Bx9zDadyaMpvQUKHAaHVrA81UDfHaJ6EE4lhYHrHHyidEZe5GBeaVJDb21mOXIm_6UCqO3i9veId918AhAHIaapdz2">
+</div>
+<span class="font-label-sm text-label-sm text-secondary-fixed-variant mb-xs">DRY FRUITS • GOLDEN</span>
+<h3 class="font-headline-md text-[18px] leading-6 mb-xs line-clamp-2">Golden Afghan Raisins (Kishmish)</h3>
+<div class="flex items-center gap-1 mb-md">
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 0;">star</span>
+<span class="text-[12px] text-on-surface-variant ml-1">(31)</span>
+</div>
+<div class="mt-auto">
+<div class="flex flex-wrap gap-2 mb-md">
+<button class="text-[12px] font-medium border border-outline text-on-surface-variant px-3 py-1 rounded">250g</button>
+<button class="text-[12px] font-medium border border-primary text-primary px-3 py-1 rounded">500g</button>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary-container">₹210.00</span>
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary-container active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[20px]" data-icon="shopping_basket">shopping_basket</span>
+<span class="font-label-sm text-label-sm px-1">Add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 8 -->
+<div class="group bg-white rounded-lg p-md transition-all duration-300 product-card-shadow flex flex-col border border-surface-container hover:border-primary/20">
+<div class="relative w-full aspect-square bg-surface-container-low rounded-lg mb-md overflow-hidden flex items-center justify-center p-md">
+<img class="object-contain w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Whole cloves and cinnamon sticks arranged on a small artisanal wooden board. The spice textures are incredibly sharp and detailed. A light dusting of ground cinnamon adds to the atmospheric feel of a high-end pantry. The lighting is warm and moody, focusing on the quality and aroma of the spices, perfectly representing ALAN FOODS premium spice collection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnmk0IeFEqWj09-4MF1e4GWC1wxFdQ-k24BMfe6wQ00TRZ07YSCIOb6QZw15pFVZSf5IP2LgTrHtg7_BP-QYlVWaOh4gG8iRLRaSd5iDCeDTpCbV1OqSqC1M7LaIIrrVCt2dwv500PnJ4HoZKmqfs8RjpMWDWaSec3ragTlS-GnmCYfRfjuD1rVOSDDa4KvJMyJ57bvIkLN5zsB1UXewmsXQr4rJY_8LLp5qmye1J2hgkpqozjOv9JPfNmExFkx8hN0L1rfHVT">
+<span class="absolute top-2 left-2 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">POPULAR</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary-fixed-variant mb-xs">SPICES • HAND-PICKED</span>
+<h3 class="font-headline-md text-[18px] leading-6 mb-xs line-clamp-2">Premium Whole Cloves (Laung)</h3>
+<div class="flex items-center gap-1 mb-md">
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-yellow-500 text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[12px] text-on-surface-variant ml-1">(112)</span>
+</div>
+<div class="mt-auto">
+<div class="flex flex-wrap gap-2 mb-md">
+<button class="text-[12px] font-medium border border-primary text-primary px-3 py-1 rounded">100g</button>
+<button class="text-[12px] font-medium border border-outline text-on-surface-variant px-3 py-1 rounded">250g</button>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary-container">₹180.00</span>
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary-container active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[20px]" data-icon="shopping_basket">shopping_basket</span>
+<span class="font-label-sm text-label-sm px-1">Add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex justify-center items-center gap-sm mt-lg">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline text-on-surface-variant hover:border-primary hover:text-primary transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-white font-label-md">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline text-on-surface-variant hover:border-primary hover:text-primary transition-all font-label-md">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline text-on-surface-variant hover:border-primary hover:text-primary transition-all font-label-md">3</button>
+<span class="text-on-surface-variant">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline text-on-surface-variant hover:border-primary hover:text-primary transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</main>
+<!-- Detailed Description Sections (Category Introductions) -->
+<section class="bg-surface-container-low py-lg border-y border-surface-container">
+<div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="p-md bg-white rounded-lg border border-surface-container">
+<div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center text-secondary mb-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">nutrition</span>
+</div>
+<h4 class="font-headline-md text-[20px] mb-sm">Premium Nuts</h4>
+<p class="font-body-md text-on-surface-variant opacity-80 leading-relaxed">
+                    Our nuts are sourced from specific global origins known for superior quality. Each batch undergoes rigorous sorting to ensure only the largest, blemish-free nuts reach your kitchen. Packed with healthy fats and proteins.
+                </p>
+</div>
+<div class="p-md bg-white rounded-lg border border-surface-container">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">outdoor_grill</span>
+</div>
+<h4 class="font-headline-md text-[20px] mb-sm">Whole Spices</h4>
+<p class="font-body-md text-on-surface-variant opacity-80 leading-relaxed">
+                    Experience the essence of Indian culinary tradition. Our spices are minimally processed to retain their natural oils, color, and intense aroma. Sourced directly from farmers to ensure fair trade and unmatched freshness.
+                </p>
+</div>
+<div class="p-md bg-white rounded-lg border border-surface-container">
+<div class="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center text-tertiary mb-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">nature_people</span>
+</div>
+<h4 class="font-headline-md text-[20px] mb-sm">Dried Fruits</h4>
+<p class="font-body-md text-on-surface-variant opacity-80 leading-relaxed">
+                    Naturally sun-dried with no added preservatives or colors. From succulent dates to golden raisins, our dried fruits are high in fiber and natural sugars, making them the perfect healthy snack for all ages.
+                </p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-highest w-full pt-xl pb-lg border-t border-surface-container">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-[1280px] mx-auto">
+<div class="flex flex-col gap-sm">
+<h2 class="font-headline-md text-headline-md text-primary">ALAN FOODS</h2>
+<p class="font-body-md text-on-surface-variant opacity-80">Bringing the purity of nature to your doorstep with premium nuts, exotic spices, and nutritious dry fruits.</p>
+<div class="flex gap-sm mt-md">
+<a class="w-8 h-8 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-[18px]">face_nod</span></a>
+<a class="w-8 h-8 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-[18px]">camera</span></a>
+<a class="w-8 h-8 flex items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-[18px]">alternate_email</span></a>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-secondary-fixed-variant">Categories</h4>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Nuts &amp; Seeds</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Whole Spices</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Dried Fruits</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Gift Hampers</a>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-secondary-fixed-variant">Quick Links</h4>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Sustainability</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Shipping Policy</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Privacy Policy</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Wholesale Enquiry</a>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-secondary-fixed-variant">Newsletter</h4>
+<p class="font-body-md text-on-surface-variant opacity-80 mb-sm">Join the ALAN FOODS community for exclusive offers and health tips.</p>
+<form class="flex gap-1">
+<input class="flex-1 bg-surface border border-outline rounded-lg px-3 text-sm focus:ring-1 focus:ring-primary outline-none" placeholder="Email Address" type="email">
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary-container transition-all"><span class="material-symbols-outlined">send</span></button>
+</form>
+</div>
+</div>
+<div class="max-w-[1280px] mx-auto px-margin-desktop mt-lg pt-md border-t border-surface-container-high flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-60">© 2024 ALAN FOODS. Purity in every bite.</p>
+<div class="flex items-center gap-md">
+<img alt="Visa" class="h-4 opacity-50 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkD_XVYo3-HO7fxiP7gbc3OS8VOuY23eNxk6ABjPi4I4rtNgo7AAjTZYJS-wFj0hht5nUwNAbq6s9_eyLp6E_4D9croUnsxYJizdH8pSJS1XGx8vAAP1D1D_4zrp0O_0Yw4YI7C4nwc8n-YqFb_MistB24Rbcmyri4MPAJ_qtwz0dYR1RTHB6nV5eGMxyqpgDJHaL0RjuF52m3LlQ3zU49saA1IhXRn5gFXypDolp5nkhNRFI0qY_lAXfE7V6iPwoT7Bmhz2qL">
+<img alt="Mastercard" class="h-6 opacity-50 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMRMwYMn3twBUDidqiinIUrqjNEBouuVzTZncmCcYo1rp5pT4jWFu9rJKlXPJKZlFor6qJUjuqnLRF1gEjj92r5v2eVJp7rKSgZ4r1_W4DuSO19Ji5NAanbi4RstMzI1KvOhOIr5CKqvQwLM89lk2dTfRrvzBAFS7lpf0jLZvjMvOFJvXgc1XNqo1F8a5_YnJBxBTN-QRe1D2iNt18ooMoAF9QyPxU2rW7u7q374Z1akVRmDInwFjfNxC8iNi6g8ZZiakC6ZiC">
+<img alt="UPI" class="h-4 opacity-50 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBfd_dmBwcZmoJyEaEn_Yo2vRvlcP_w1lDnCWVTfhOeoMsnTLwxPteU6l4YhnkrVQHPYA7IwG4ysl2ebEizjGV0ot7w-kpOeHph-zAVn-dLqZwYrM65VNgnGOsNLzOYt92vzFInAmUfZGxoxYwIQMkL4uc4yfDF5WgLiotPBbRRSu5ZDMbkn4OczkSavgHbY1nTISPf4W2_oj4NbgXyOGLkXt_TRVuJJ0QfoGKMuknXe3DI6gl5V4NRZvGDUD92ruCmeq_1DiX">
+</div>
+</div>
+</footer>
+<script>
+        // Simple interactivity for size selection and active state
+        document.querySelectorAll('.group button.border').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const parent = this.parentElement;
+                parent.querySelectorAll('button').forEach(b => {
+                    b.classList.remove('border-primary', 'text-primary');
+                    b.classList.add('border-outline', 'text-on-surface-variant');
+                });
+                this.classList.remove('border-outline', 'text-on-surface-variant');
+                this.classList.add('border-primary', 'text-primary');
+            });
+        });
+
+        // Sticky header transition
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('h-16');
+                header.classList.remove('h-20');
+            } else {
+                header.classList.add('h-20');
+                header.classList.remove('h-16');
+            }
+        });
+    </script>
+
+
+</body></html>

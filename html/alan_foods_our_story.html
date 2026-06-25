@@ -1,0 +1,320 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>The ALAN FOODS Story | Purity &amp; Heritage</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#757470",
+                        "surface-dim": "#dcd9d9",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#fefbf6",
+                        "primary-fixed": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#007528",
+                        "on-secondary-fixed": "#002106",
+                        "secondary-container": "#7cfd89",
+                        "tertiary": "#5c5b58",
+                        "tertiary-fixed": "#e5e2dd",
+                        "on-primary-fixed": "#410002",
+                        "on-surface": "#1c1b1b",
+                        "surface-bright": "#fcf9f8",
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary-fixed": "#7cfd89",
+                        "inverse-primary": "#ffb4ab",
+                        "surface-container": "#f0eded",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#ba0013",
+                        "inverse-surface": "#313030",
+                        "error": "#ba1a1a",
+                        "primary-container": "#e31e24",
+                        "on-tertiary-fixed": "#1c1c19",
+                        "tertiary-fixed-dim": "#c8c6c2",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#e7bdb8",
+                        "on-primary-fixed-variant": "#93000d",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "primary-fixed-dim": "#ffb4ab",
+                        "surface-tint": "#c00014",
+                        "surface-container-high": "#eae7e7",
+                        "surface": "#fcf9f8",
+                        "background": "#fcf9f8",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#5fe070",
+                        "secondary": "#006e25",
+                        "on-background": "#1c1b1b",
+                        "on-surface-variant": "#5d3f3c",
+                        "on-secondary-fixed-variant": "#00531a",
+                        "surface-variant": "#e5e2e1",
+                        "outline": "#926f6b",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-primary-container": "#fffafa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "16px",
+                        "margin-mobile": "16px",
+                        "xl": "80px",
+                        "margin-desktop": "64px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "xs": "8px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Work Sans"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Work Sans"],
+                        "body-lg": ["Work Sans"],
+                        "headline-lg": ["Playfair Display"],
+                        "label-sm": ["Work Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .grain-bg {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container grain-bg">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 shadow-sm bg-surface">
+<nav class="flex justify-between items-center w-full px-margin-desktop max-w-[1280px] mx-auto h-20">
+<div class="font-headline-md text-headline-md font-bold text-primary tracking-tight">ALAN FOODS</div>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Shop All</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Nuts</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Dry Fruits</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Spices</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Gifts</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Our Story</a>
+</div>
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-primary" data-icon="person">person</button>
+<button class="material-symbols-outlined text-primary relative" data-icon="shopping_cart">
+                    shopping_cart
+                    <span class="absolute -top-2 -right-2 bg-primary text-on-primary text-[10px] w-4 h-4 flex items-center justify-center rounded-full">2</span>
+</button>
+</div>
+</nav>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative h-[819px] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="A cinematic, low-angle shot of sun-drenched spice fields at dawn with mist rolling over the hills. The lighting is warm and golden, reflecting a premium organic brand aesthetic with rich earth tones and vibrant green foliage. The scene is calm, evoking purity and natural origin, perfectly aligned with a luxury food brand identity." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC2vUuan7pexZWqIgS5conzCD4TR9BUC_x5c_HR1ggw2cUFDWxHkRvcx-al6vMtLk5C5ftqfcDgOVevrkE4BZzYGlkUj3tQYjKnlJVNKAA5BLOgJn4G4xpRQXVynOMXaRZsCAv6enoZ_wkYuTtAbfy5ycvHeLpmgUtarvUxWQqxY1DIHHFyLMzM-40H0l4pinkkYrIh0E5_-M1OaH1DKOt32p7HjWORWXbotr4R4dXwT0Na1By7voggvOcYCyPEVBDuAE8Znf62')"></div>
+<div class="absolute inset-0 bg-black/30"></div>
+</div>
+<div class="relative z-10 text-center px-margin-mobile">
+<span class="font-label-md text-label-md text-on-primary tracking-[0.2em] uppercase mb-base block">Our Heritage</span>
+<h1 class="font-display-lg text-display-lg md:text-[64px] text-on-primary max-w-4xl mx-auto leading-tight italic">The ALAN FOODS Story</h1>
+</div>
+</section>
+<!-- Editorial Content 01 -->
+<section class="px-margin-desktop max-w-[1280px] mx-auto py-xl grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-5 space-y-md order-2 md:order-1">
+<div class="w-12 h-[2px] bg-primary"></div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Purity in Every Bite</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    At ALAN FOODS, we believe that great food starts with exceptional ingredients. Our journey began with a simple yet profound realization: the modern world has moved too far from the source. We set out to bridge that gap, bringing the raw, unadulterated flavors of nature directly to your table.
+                </p>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    From the sun-kissed orchards of the Mediterranean to the fertile valleys of the Indian subcontinent, we traverse the globe to find farmers who share our obsessive commitment to organic integrity.
+                </p>
+</div>
+<div class="md:col-span-7 order-1 md:order-2">
+<div class="aspect-[4/5] md:aspect-[16/9] bg-white p-sm shadow-xl relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Macro photography of artisanal spice grinding using a traditional stone mortar and pestle. Vibrant red chili flakes and whole black peppercorns are captured in mid-crush with dust particles catching a beam of natural window light. The background is a rustic wooden kitchen surface, conveying a tactile, handcrafted, and high-end culinary process." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUhHQ5FyqkJlViX7WVmcZNnjq9eqJbuyvv51gTUWinnxwDHipogdFQSu6H2R0r_jKbFTVFk_Ys_vPy8uU2ZooqYvyMX2iF7mMu28CcShL0JlSZ1cziKptK4WZpctDyTmdZnVqr7ZPOdzw47YfPNRPOb4x3999BmjogMPpHGqDyyl91VdKo6ZnmjsasgFnO_qbCEKwjs5_2GT8FZZ1O0omGpiO7jtnVKKZqjvHyGjR2vzHPhqjDOCJgBqdBEIajHRKX1uK85KWS">
+<div class="absolute bottom-md left-md bg-white/90 backdrop-blur-sm p-base px-sm">
+<span class="font-label-sm text-label-sm text-primary">TRADITIONAL METHODS</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Feature -->
+<section class="bg-surface-container-low py-xl">
+<div class="px-margin-desktop max-w-[1280px] mx-auto">
+<div class="text-center mb-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Our Pillars of Excellence</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">Meticulously sourced, scientifically tested, and curated for the gourmet palate.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter h-auto md:h-[600px]">
+<!-- Bento Card 1 -->
+<div class="md:col-span-2 md:row-span-2 bg-white group overflow-hidden relative shadow-sm hover:shadow-lg transition-all duration-300">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Wide shot of a lush, organic walnut orchard in the early morning light. The trees are heavy with green husks, and the grass is vibrant emerald. The lighting is soft and ethereal, emphasizing the clean, sustainable, and natural environment where ALAN FOODS products are born." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd8mphqGBpr5rJuZZiHAYsLAZOHlDLT7vj-uNa50llpww1IQlg9ePr7YdayfHp02ejmIM6aTTVfGd9k7U4hPCuXKikVRLHuW_ApIHHP0pWPPcFzWLHNS6OuWdpCy26imsXF4836zt0I_qsAWbqFmovANfji7o4PPNl7yvSWErn2-6Abdee2GhfbbUus9NCPTv6EGZGeavuBD2Otl5vQKwu_BdzOzHIvckn7bHcG8gzH5W803SZc2_EKaOKCT8ZbwWBkkhxcEmn">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-lg">
+<h3 class="font-headline-md text-headline-md text-white mb-xs">Direct Sourcing</h3>
+<p class="font-body-md text-white/80 max-w-sm">We skip the middlemen to work directly with generational farmers, ensuring fair trade and peak freshness.</p>
+</div>
+</div>
+<!-- Bento Card 2 -->
+<div class="md:col-span-2 bg-white flex flex-col md:flex-row shadow-sm">
+<div class="flex-1 p-lg space-y-xs">
+<span class="material-symbols-outlined text-secondary" data-icon="verified">verified</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Quality Lab</h3>
+<p class="font-body-md text-on-surface-variant">Every batch undergoes rigorous 5-step purity testing for toxins and moisture.</p>
+</div>
+<div class="w-full md:w-1/2 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, clinical lab setting where a specialist is inspecting premium almonds under a high-intensity lamp. The aesthetic is modern minimalist with white surfaces and stainless steel tools, showcasing the brand's commitment to scientific purity and safety standards." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCXGtZApNB3gpQIBVNsh18ixSD03mHHdNCkbNhPWkgVNHXTBlYvH7KWIQaEW8oCPJixW0y0UGzGPTRw2gO1zJtmgSQvWEmMqeYRYXpY-bgKpJOMPSQvCS4BKDo9NdX9YuYgEb7rfTzPWqchwEDy2cg5TWAMghHXVQXIWzr-3KwXO6UlWnFM2YqcRvTx8Dmbas2lb7WA9deRBKb4AsKalyQg0tMM4EUF5oTr736Jkhu9d9tanQV_4qnWQZBRxDMdbmKIewm82Mi">
+</div>
+</div>
+<!-- Bento Card 3 -->
+<div class="bg-primary text-on-primary p-lg flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-[48px] mb-sm" data-icon="eco">eco</span>
+<h4 class="font-label-md text-label-md uppercase tracking-wider">100% Organic</h4>
+<p class="font-body-md mt-xs">Certified by international standards for chemical-free farming.</p>
+</div>
+<!-- Bento Card 4 -->
+<div class="bg-secondary text-on-secondary p-lg flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-[48px] mb-sm" data-icon="local_shipping">local_shipping</span>
+<h4 class="font-label-md text-label-md uppercase tracking-wider">Farm to Door</h4>
+<p class="font-body-md mt-xs">Reduced storage time means higher nutrient density and flavor.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Quote Section -->
+<section class="py-xl px-margin-desktop max-w-[1000px] mx-auto text-center">
+<span class="material-symbols-outlined text-primary text-[40px]" data-icon="format_quote" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<blockquote class="font-display-lg text-display-lg text-on-surface italic mt-sm mb-lg leading-tight">
+                "Our mission is to return to the essence of food. No additives, no compromises—just the pure, vibrant energy of the earth."
+            </blockquote>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-sm border-2 border-primary-container">
+<img class="w-full h-full object-cover" data-alt="Portrait of a distinguished man in his 50s, the founder of ALAN FOODS, wearing a simple linen shirt in a sunlit garden. He has a warm, authoritative expression. The photography style is high-end editorial, with soft depth of field and natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG-U3eOFeutvNgOZIENspZuyAEBvIQENwRlgo07kmhCGDZ5Wvv5BJKQrq3LSenYNjoHpNX5SvJRxJXlWcAu3Qoc4JNymadBCfqZjoZ_sbxeknVaz1WuleK5nKbeHjwm4EKLExjuXbuwMufx_gOR2IoZoq8G1HhDaKEhAxVXBLjzXlzKKX2H3a6jeuKpXLPNJBJwI00Pol6SgSsbQ2TRKYo-jtscXkaB6rHSgok2Q6l450w1AJ7cQIyKrPk_NKXlZgcRFdMRSW6">
+</div>
+<p class="font-label-md text-label-md text-on-surface">ALAN MATHEW</p>
+<p class="font-body-md text-on-surface-variant italic">Founder &amp; CEO</p>
+</div>
+</section>
+<!-- Origin Section -->
+<section class="px-margin-desktop max-w-[1280px] mx-auto py-xl border-t border-surface-variant">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
+<div>
+<img class="w-full rounded-xl shadow-2xl" data-alt="A stylized, artistic map showing key spice routes across Asia and the Middle East. The map is drawn in a vintage-modern style with gold foil accents and deep navy backgrounds. Delicate lines connect iconic cities, highlighting the historical journey of flavor that ALAN FOODS celebrates." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMlknCfib-fNDfJDIq6-9nGQF2mSvMgch6V4I02UpK9vNcVX6bYDvSoBAy65OZ0oZEtCe5nAafgQ5c9KtgIUi1vvJlz39ZByu-xMQR_-cyRsMbTuGOPUhlPKZMkcxluGzqIKpQUN4e8lqSvfSxypykBc-6dECufkaxh3pkv_NNuBOO5lLl0B0HcVY0eJFmvUyS19xR5Tw1tl4PVa2LEEe493PMw95cREsfNh2S_kf_LwZ5PmAyx5jpRApN62cehsR0n4JeR4g8">
+</div>
+<div class="space-y-md">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Sourced from Kerala</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        Our heart lies in the spice capital of the world. By maintaining local hubs in Wayanad and Idukki, we ensure our black pepper and cardamom never lose their volatile oils—the very essence of their flavor.
+                    </p>
+<div class="flex gap-md pt-sm">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary">24+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Farmer Cooperatives</span>
+</div>
+<div class="w-[1px] bg-surface-variant h-12"></div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary">100%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Traceable Origin</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full pt-xl pb-lg bg-surface-container-highest">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-[1280px] mx-auto">
+<div class="space-y-md">
+<div class="font-headline-md text-headline-md text-primary font-bold tracking-tight">ALAN FOODS</div>
+<p class="font-body-md text-on-surface-variant">Crafting culinary excellence through pure, organic sourcing since 2024.</p>
+<div class="flex gap-sm">
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:scale-110 transition-transform" data-icon="facebook">face_nod</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:scale-110 transition-transform" data-icon="photo_camera">photo_camera</span>
+</div>
+</div>
+<div class="space-y-sm">
+<h4 class="font-label-md text-label-md text-secondary uppercase">Quick Links</h4>
+<ul class="space-y-xs">
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors underline decoration-1 underline-offset-4" href="#">Sustainability</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors underline decoration-1 underline-offset-4" href="#">Shipping Policy</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors underline decoration-1 underline-offset-4" href="#">Privacy</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-primary transition-colors underline decoration-1 underline-offset-4" href="#">Wholesale</a></li>
+</ul>
+</div>
+<div class="space-y-sm">
+<h4 class="font-label-md text-label-md text-secondary uppercase">Contact Us</h4>
+<ul class="space-y-xs">
+<li class="flex items-center gap-xs font-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="mail">mail</span>
+                        hello@alanfoods.com
+                    </li>
+<li class="flex items-center gap-xs font-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+                        Kerala, India
+                    </li>
+</ul>
+</div>
+<div class="space-y-sm">
+<h4 class="font-label-md text-label-md text-secondary uppercase">Newsletter</h4>
+<p class="font-body-md text-on-surface-variant">Join our journey for exclusive culinary insights.</p>
+<div class="flex">
+<input class="bg-white border-none rounded-l-lg w-full px-sm py-xs focus:ring-1 focus:ring-primary" placeholder="Email address" type="email">
+<button class="bg-primary text-on-primary px-sm rounded-r-lg hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-lg pt-md border-t border-surface-variant px-margin-desktop max-w-[1280px] mx-auto text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 ALAN FOODS. Purity in every bite.</p>
+</div>
+</footer>
+<script>
+        // Simple parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('section.relative img');
+            if(heroImage) {
+                heroImage.style.transform = `translateY(${scrolled * 0.4}px)`;
+            }
+        });
+
+        // Hover animations for bento cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.querySelector('img').classList.add('scale-110');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.querySelector('img').classList.remove('scale-110');
+            });
+        });
+    </script>
+</body></html>

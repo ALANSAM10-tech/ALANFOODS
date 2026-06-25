@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Dashboard - ALAN FOODS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#757470",
+                    "surface-dim": "#dcd9d9",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#fefbf6",
+                    "primary-fixed": "#ffdad6",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#007528",
+                    "on-secondary-fixed": "#002106",
+                    "secondary-container": "#7cfd89",
+                    "tertiary": "#5c5b58",
+                    "tertiary-fixed": "#e5e2dd",
+                    "on-primary-fixed": "#410002",
+                    "on-surface": "#1c1b1b",
+                    "surface-bright": "#fcf9f8",
+                    "inverse-on-surface": "#f3f0ef",
+                    "surface-container-low": "#f6f3f2",
+                    "secondary-fixed": "#7cfd89",
+                    "inverse-primary": "#ffb4ab",
+                    "surface-container": "#f0eded",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#ba0013",
+                    "inverse-surface": "#313030",
+                    "error": "#ba1a1a",
+                    "primary-container": "#e31e24",
+                    "on-tertiary-fixed": "#1c1c19",
+                    "tertiary-fixed-dim": "#c8c6c2",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#e7bdb8",
+                    "on-primary-fixed-variant": "#93000d",
+                    "on-tertiary-fixed-variant": "#474743",
+                    "primary-fixed-dim": "#ffb4ab",
+                    "surface-tint": "#c00014",
+                    "surface-container-high": "#eae7e7",
+                    "surface": "#fcf9f8",
+                    "background": "#fcf9f8",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed-dim": "#5fe070",
+                    "secondary": "#006e25",
+                    "on-background": "#1c1b1b",
+                    "on-surface-variant": "#5d3f3c",
+                    "on-secondary-fixed-variant": "#00531a",
+                    "surface-variant": "#e5e2e1",
+                    "outline": "#926f6b",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-primary-container": "#fffafa"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "16px",
+                    "margin-mobile": "16px",
+                    "xl": "80px",
+                    "margin-desktop": "64px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "md": "24px",
+                    "xs": "8px",
+                    "lg": "48px"
+            },
+            "fontFamily": {
+                    "label-md": ["Work Sans"],
+                    "headline-md": ["Playfair Display"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"],
+                    "body-md": ["Work Sans"],
+                    "body-lg": ["Work Sans"],
+                    "headline-lg": ["Playfair Display"],
+                    "label-sm": ["Work Sans"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fcf9f8; /* Tertiary Parchment Base */
+            background-image: radial-gradient(#e5e2e1 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        .order-card-shadow {
+            box-shadow: 0px 12px 24px rgba(0,0,0, 0.04);
+        }
+        .active-tab-indicator {
+            position: relative;
+        }
+        .active-tab-indicator::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ba0013;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim shadow-sm h-20">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-[1280px] mx-auto h-full">
+<div class="flex items-center gap-lg">
+<a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-container tracking-tight" href="#">ALAN FOODS</a>
+<nav class="hidden md:flex items-center gap-md">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all duration-200" href="#">Shop All</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all duration-200" href="#">Nuts</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all duration-200" href="#">Spices</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all duration-200" href="#">Gifts</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors relative">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute top-1 right-1 w-4 h-4 bg-primary text-white text-[10px] flex items-center justify-center rounded-full">2</span>
+</button>
+<button class="p-2 bg-primary-container text-on-primary-container rounded-full transition-colors active:scale-[0.99]" data-icon="person">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-xl px-margin-desktop max-w-[1280px] mx-auto min-h-screen">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Sidebar Navigation -->
+<aside class="lg:col-span-3 space-y-md">
+<div class="bg-surface p-md rounded-lg shadow-sm border border-surface-variant/20">
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="text-on-secondary-container font-bold text-headline-md">JD</span>
+</div>
+<div>
+<h2 class="font-headline-md text-body-lg text-on-surface font-bold">John Doe</h2>
+<p class="font-label-sm text-on-surface-variant">Premium Member</p>
+</div>
+</div>
+<nav class="space-y-base">
+<a class="flex items-center gap-sm p-sm rounded-lg bg-surface-container text-primary font-semibold transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined">package_2</span>
+<span class="font-label-md">Order History</span>
+</a>
+<a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-md">My Favorites</span>
+</a>
+<a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined">location_on</span>
+<span class="font-label-md">Addresses</span>
+</a>
+<a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md">Account Settings</span>
+</a>
+<div class="pt-lg">
+<button class="w-full flex items-center gap-sm p-sm rounded-lg text-error hover:bg-error-container/20 transition-colors">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md">Sign Out</span>
+</button>
+</div>
+</nav>
+</div>
+<!-- Quality Promise Card -->
+<div class="bg-primary p-md rounded-lg text-white space-y-sm">
+<span class="material-symbols-outlined text-display-lg opacity-50">verified</span>
+<h3 class="font-headline-md text-body-lg">Purity Guaranteed</h3>
+<p class="font-body-md text-sm opacity-90">Every product is sourced directly from heritage farms across the subcontinent.</p>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="lg:col-span-9 space-y-lg">
+<!-- Welcome & Stats -->
+<section>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-lg">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Welcome back, John!</h1>
+<p class="font-body-lg text-on-surface-variant mt-xs">Here's what's happening with your organic kitchen.</p>
+</div>
+<div class="flex gap-sm">
+<div class="bg-surface p-sm rounded-lg border border-surface-variant/30 flex items-center gap-sm">
+<div class="bg-secondary-container/30 p-2 rounded-full">
+<span class="material-symbols-outlined text-secondary text-body-lg">eco</span>
+</div>
+<div>
+<p class="font-label-sm text-on-surface-variant">Impact</p>
+<p class="font-label-md text-secondary">8 Organic Farms Supported</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Stats Bento -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="bg-surface p-md rounded-xl border border-surface-variant/20 order-card-shadow">
+<p class="font-label-sm text-on-surface-variant mb-xs">Active Orders</p>
+<p class="font-headline-md text-display-lg text-primary">02</p>
+</div>
+<div class="bg-surface p-md rounded-xl border border-surface-variant/20 order-card-shadow">
+<p class="font-label-sm text-on-surface-variant mb-xs">Total Purchases</p>
+<p class="font-headline-md text-display-lg text-on-surface">24</p>
+</div>
+<div class="bg-surface p-md rounded-xl border border-surface-variant/20 order-card-shadow">
+<p class="font-label-sm text-on-surface-variant mb-xs">Alan Rewards</p>
+<p class="font-headline-md text-display-lg text-secondary">850</p>
+</div>
+<div class="bg-surface p-md rounded-xl border border-surface-variant/20 order-card-shadow flex flex-col justify-center items-center text-center">
+<p class="font-label-md text-primary">Refer a Friend</p>
+<span class="material-symbols-outlined text-primary mt-xs">arrow_forward</span>
+</div>
+</div>
+</section>
+<!-- Current Orders Section -->
+<section>
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Tracking Orders</h3>
+<a class="text-primary font-label-md flex items-center gap-1 hover:underline" href="#">View All <span class="material-symbols-outlined text-sm">open_in_new</span></a>
+</div>
+<div class="space-y-md">
+<!-- Tracking Card 1 -->
+<div class="bg-surface p-md rounded-xl order-card-shadow border-l-4 border-secondary flex flex-col md:flex-row gap-md items-center">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="High resolution commercial photography of premium organic whole almonds in a minimalist glass jar against a clean light parchment background, soft studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcwI01lnAaii7ETTk5EjUBEc5Oj4AB0zNTcjILi8K8mJ1C9F_AzzbXyG420xr4R3UYONKDDKXLJh1r8wbbPr1U7HZkW_fIg5Hwq7aAfbPJAekMU5AOG8ZoeYNM7WxY-p1_0riYwuINqBn-KO2DToLLPCdM8zqHvVsvJDc3JCMPY4SCSeIzx6tSBZBNtqSnAUgzSrIyYg5xfa1-tdWwX3AqxLqI4gev72MVrZ77oFYYnTfGDxp8XTVuaWz2UNED2GNQ_SNvfvf5"/>
+</div>
+<div class="flex-grow">
+<div class="flex flex-wrap items-center gap-sm mb-1">
+<span class="font-label-md text-on-surface">Order #AF-92834</span>
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px] rounded-full font-bold uppercase tracking-wider">In Transit</span>
+</div>
+<h4 class="font-headline-md text-body-lg">Premium California Almonds (1kg) + Masala Cashews</h4>
+<p class="font-body-md text-sm text-on-surface-variant">Arriving by Thursday, Oct 24</p>
+</div>
+<div class="flex flex-col gap-2 w-full md:w-auto">
+<button class="w-full md:w-32 bg-primary text-white py-2 rounded-lg font-label-md hover:bg-primary/90 transition-colors">Track Now</button>
+<button class="w-full md:w-32 border border-outline text-on-surface py-2 rounded-lg font-label-md hover:bg-surface-container-low transition-colors">Order Details</button>
+</div>
+</div>
+<!-- Tracking Card 2 -->
+<div class="bg-surface p-md rounded-xl order-card-shadow border-l-4 border-primary flex flex-col md:flex-row gap-md items-center">
+<div class="w-20 h-20 bg-surface-container rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Vibrant close-up of organic red chili powder and whole star anise spices arranged artistically on a textured linen surface, high-end organic food styling with warm bright lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7nz2qGrF2ILEt_KfLpAUWMNSX6HNl6nSV0x-Yt6y_sA22VL8-i3CjnwnEfBKnuqjNdLL9XDjOG7fbYqdV_J2zyzwpHp_q7UPMJGuHVUBODEka9o8YZggIL4cAgmbWWYSkofNeN8SvVU1xbtqfKYY1SSl6O1KgqmTdUxMIHK9J4Offbt1_yHca7meo5mPcRHmIXD9PjGA2V79fICTEkfnyL9T6teG80YcQ2GXR4W5Pt1edgEgzJfPohfKBZ43M0tEkb89n-lYe"/>
+</div>
+<div class="flex-grow">
+<div class="flex flex-wrap items-center gap-sm mb-1">
+<span class="font-label-md text-on-surface">Order #AF-92110</span>
+<span class="px-2 py-0.5 bg-primary-container text-white text-[10px] rounded-full font-bold uppercase tracking-wider">Processing</span>
+</div>
+<h4 class="font-headline-md text-body-lg">Wholesale Organic Spice Bundle</h4>
+<p class="font-body-md text-sm text-on-surface-variant">Preparing for dispatch from Kerala Hub</p>
+</div>
+<div class="flex flex-col gap-2 w-full md:w-auto">
+<button class="w-full md:w-32 border border-outline text-on-surface py-2 rounded-lg font-label-md hover:bg-surface-container-low transition-colors">Order Details</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Order History -->
+<section>
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Recent Purchases</h3>
+<div class="flex gap-sm">
+<button class="font-label-sm px-3 py-1 bg-surface-container rounded-full text-on-surface-variant border border-surface-variant/30">Last 3 Months</button>
+</div>
+</div>
+<div class="bg-surface rounded-xl overflow-hidden order-card-shadow border border-surface-variant/20">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low font-label-md text-on-surface-variant">
+<tr>
+<th class="px-md py-sm">Product</th>
+<th class="px-md py-sm">Date</th>
+<th class="px-md py-sm">Status</th>
+<th class="px-md py-sm">Amount</th>
+<th class="px-md py-sm">Action</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-sm">
+<tr class="border-b border-surface-variant/10 hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-md font-medium">Royal Saffron (10g)</td>
+<td class="px-md py-md text-on-surface-variant">Sep 12, 2024</td>
+<td class="px-md py-md"><span class="text-secondary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Delivered</span></td>
+<td class="px-md py-md">₹2,450.00</td>
+<td class="px-md py-md">
+<button class="text-primary hover:underline font-semibold">Buy Again</button>
+</td>
+</tr>
+<tr class="border-b border-surface-variant/10 hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-md font-medium">Dried Apricots &amp; Pistachios</td>
+<td class="px-md py-md text-on-surface-variant">Aug 28, 2024</td>
+<td class="px-md py-md"><span class="text-secondary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Delivered</span></td>
+<td class="px-md py-md">₹1,200.00</td>
+<td class="px-md py-md">
+<button class="text-primary hover:underline font-semibold">Buy Again</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-md font-medium">Purity Gift Box - Large</td>
+<td class="px-md py-md text-on-surface-variant">Aug 05, 2024</td>
+<td class="px-md py-md"><span class="text-secondary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Delivered</span></td>
+<td class="px-md py-md">₹4,500.00</td>
+<td class="px-md py-md">
+<button class="text-primary hover:underline font-semibold">Buy Again</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full pt-xl pb-lg bg-surface-container-highest dark:bg-surface-container-lowest">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-[1280px] mx-auto">
+<div class="col-span-1 md:col-span-1">
+<h2 class="font-headline-md text-headline-md text-primary dark:text-primary-container mb-md">ALAN FOODS</h2>
+<p class="font-body-md text-sm text-on-surface-variant pr-md">Bringing the purest organic nuts and traditional spices from heritage farms directly to your doorstep.</p>
+</div>
+<div class="col-span-1">
+<h3 class="font-label-md text-secondary mb-md">Quick Links</h3>
+<nav class="flex flex-col gap-xs">
+<a class="font-label-sm text-on-surface-variant hover:text-primary underline-offset-4 hover:underline" href="#">Sustainability</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary underline-offset-4 hover:underline" href="#">Shipping Policy</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary underline-offset-4 hover:underline" href="#">Privacy</a>
+</nav>
+</div>
+<div class="col-span-1">
+<h3 class="font-label-md text-secondary mb-md">Support</h3>
+<nav class="flex flex-col gap-xs">
+<a class="font-label-sm text-on-surface-variant hover:text-primary underline-offset-4 hover:underline" href="#">Contact Us</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary underline-offset-4 hover:underline" href="#">Wholesale</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary underline-offset-4 hover:underline" href="#">FAQ</a>
+</nav>
+</div>
+<div class="col-span-1">
+<h3 class="font-label-md text-secondary mb-md">Newsletter</h3>
+<p class="font-body-md text-xs text-on-surface-variant mb-sm">Join our healthy living community for tips and exclusive offers.</p>
+<div class="flex">
+<input class="bg-surface border-none rounded-l-lg text-sm w-full focus:ring-1 focus:ring-primary" placeholder="Email Address" type="email"/>
+<button class="bg-primary text-white px-md py-2 rounded-r-lg hover:bg-primary/90 transition-colors">Join</button>
+</div>
+</div>
+</div>
+<div class="px-margin-desktop max-w-[1280px] mx-auto mt-lg pt-md border-t border-surface-variant/20">
+<p class="font-label-sm text-on-surface-variant text-center opacity-70">© 2024 ALAN FOODS. Purity in every bite.</p>
+</div>
+</footer>
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface shadow-[0_-4px_12px_rgba(0,0,0,0.05)] h-16 flex items-center justify-around z-50">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-[10px] font-label-sm">Shop</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-label-sm">Saved</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-[10px] font-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for cards
+        document.querySelectorAll('.order-card-shadow').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+                card.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>
