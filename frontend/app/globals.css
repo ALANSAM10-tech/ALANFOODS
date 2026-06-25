@@ -1,26 +1,93 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Fonts mapping */
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-work-sans), sans-serif;
+  
+  /* Color Palette - Artisan Harvest Design System */
+  --color-primary: #ba0013;
+  --color-primary-container: #e31e24;
+  --color-secondary: #006e25;
+  --color-secondary-container: #7cfd89;
+  --color-tertiary: #5c5b58;
+  --color-background: #fcf9f8;
+  --color-surface: #fcf9f8;
+  --color-surface-container: #f0eded;
+  --color-on-surface: #1c1b1b;
+  --color-on-surface-variant: #5d3f3c;
+  --color-outline: #926f6b;
+  
+  /* Surface Container & Tonal Layers */
+  --color-surface-dim: #dcd9d9;
+  --color-surface-bright: #fcf9f8;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f6f3f2;
+  --color-surface-container-high: #eae7e7;
+  --color-surface-container-highest: #e5e2e1;
+  --color-inverse-surface: #313030;
+  --color-inverse-on-surface: #f3f0ef;
+  --color-outline-variant: #e7bdb8;
+  
+  /* Error levels */
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  /* On-Color targets */
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #fffafa;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #007528;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #fefbf6;
+
+  /* Custom Spacing Scales */
+  --spacing-base: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  --spacing-xl: 80px;
+  --spacing-gutter: 24px;
+  --spacing-margin-mobile: 16px;
+  --spacing-margin-desktop: 64px;
+
+  /* Border Radius Scale */
+  --radius-DEFAULT: 0.125rem; /* 2px */
+  --radius-lg: 0.25rem;       /* 4px */
+  --radius-xl: 0.5rem;        /* 8px */
+  --radius-full: 9999px;      /* Full pill/circle */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* Material Symbols Outlined integration */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
+
+.hero-pattern {
+  background-color: var(--color-background);
+  background-image: radial-gradient(var(--color-surface-container-highest) 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
 }
