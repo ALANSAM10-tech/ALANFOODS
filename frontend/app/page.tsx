@@ -101,7 +101,7 @@ export default function Home() {
             <div className="flex flex-col md:flex-row justify-between items-end mb-lg gap-md">
               <div>
                 <h2 className="font-serif text-headline-lg text-on-surface mb-xs font-bold">Explore Our Pantry</h2>
-                <p className="font-sans text-body-md text-on-surface-variant">The finest selection of earth's treasures, curated for your kitchen.</p>
+                <p className="font-sans text-body-md text-on-surface-variant">The finest selection of earth&apos;s treasures, curated for your kitchen.</p>
               </div>
               <Link href="/shop" className="text-primary font-sans text-label-md hover:underline underline-offset-8 font-semibold">
                 View All Categories →
@@ -172,7 +172,7 @@ export default function Home() {
             </div>
             <h2 className="font-serif text-headline-lg text-on-surface mb-md font-bold">Trusted by 10,000+ Families</h2>
             <p className="font-sans text-body-lg text-on-surface-variant mb-lg max-w-2xl mx-auto italic leading-relaxed">
-              "The quality of whole spices from ALAN FOODS is unmatched. These ground-ready pods and seeds make my kitchen smell like a spice market in Kerala every morning!"
+              &quot;The quality of whole spices from ALAN FOODS is unmatched. These ground-ready pods and seeds make my kitchen smell like a spice market in Kerala every morning!&quot;
               <span className="block font-bold text-on-surface mt-sm not-italic font-sans text-body-md">— Aditi R., Executive Chef</span>
             </p>
             <div className="max-w-md mx-auto flex gap-xs">

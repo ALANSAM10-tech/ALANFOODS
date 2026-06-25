@@ -25,7 +25,8 @@ function AccountContent() {
     // Read from localStorage
     const saved = localStorage.getItem("mock_orders");
     if (saved) {
-      setOrders(JSON.parse(saved));
+      const parsed = JSON.parse(saved);
+      setTimeout(() => setOrders(parsed), 0);
     } else {
       // Default initial orders
       const initialOrders: Order[] = [
@@ -38,7 +39,7 @@ function AccountContent() {
         }
       ];
       localStorage.setItem("mock_orders", JSON.stringify(initialOrders));
-      setOrders(initialOrders);
+      setTimeout(() => setOrders(initialOrders), 0);
     }
   }, []);
 

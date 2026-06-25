@@ -38,7 +38,7 @@ export default function About() {
               At ALAN FOODS, we believe that great food starts with exceptional ingredients. What began as a passion for quality has grown into a commitment to bringing the finest dry fruits, nuts, and spices directly to your kitchen.
             </p>
             <p className="font-sans text-body-md text-on-surface-variant leading-relaxed">
-              We bypass the middlemen to ensure that every almond, every raisin, and every pinch of spice meets our rigorous standards for freshness and flavor. Whether you're snacking for health or cooking a family feast, ALAN FOODS is your trusted partner in culinary excellence.
+              We bypass the middlemen to ensure that every almond, every raisin, and every pinch of spice meets our rigorous standards for freshness and flavor. Whether you&apos;re snacking for health or cooking a family feast, ALAN FOODS is your trusted partner in culinary excellence.
             </p>
           </div>
           <div className="md:col-span-7 order-1 md:order-2">
@@ -120,7 +120,7 @@ export default function About() {
             format_quote
           </span>
           <blockquote className="font-serif text-display-lg text-on-surface italic mt-sm mb-lg leading-tight font-bold">
-            "Our mission is to return to the essence of food. No additives, no compromises—just the pure, vibrant energy of the earth."
+            &quot;Our mission is to return to the essence of food. No additives, no compromises—just the pure, vibrant energy of the earth.&quot;
           </blockquote>
           <div className="flex flex-col items-center">
             <div className="w-16 h-16 rounded-full overflow-hidden mb-sm border-2 border-primary-container/30">

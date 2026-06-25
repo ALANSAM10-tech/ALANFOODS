@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -21,7 +21,27 @@ export default function CartPage() {
   const router = useRouter();
   
   // State
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([
+    {
+      id: "whole-malabar-pepper-250g",
+      name: "Whole Malabar Pepper",
+      categoryLabel: "Aromatic Spices",
+      image_url: "https://lh3.googleusercontent.com/aida-public/AB6AXuAshdTiRi-_UBhP-P8OMxRFOjHOuNXciAxdvzUd0NUw1rn93ecilcjqLzheMoN32l8jAthvHl2ESNhjmoE51r576Qz3jcxEZtUi9_y9uaG0ez2nSc0W7uJdnkaBz-OipwKG-66FaKLXPI71P3jSLmH5WF6ghVdXol1TLvny0lGzYLq37dBlHCzJ11Fur-eB7a0FgDUXeGTJulbSBE4gFR27WYFvAyE1F7EKoOYz3P8UjG5NN6XLsJ4P3cLezeZtbfYOJf7IdbIb",
+      weight: "250g",
+      price: 8.99,
+      quantity: 2
+    },
+    {
+      id: "king-cashews-500g",
+      name: "Artisanal Cashew Nuts",
+      categoryLabel: "Premium Nuts",
+      image_url: "https://lh3.googleusercontent.com/aida/AP1WRLsF4OpWDZ19gsKGTbeyKyoKwcMoDljzPa2EngO4cq2TgxrB7Ek2dQuyNr0D9gHqPWIUhc6SFj_0ueOS_tAHmmILwunxeoGr6pmyl_PgH10cVSmBqJVGTaQIhudLLHNZJSOf8AoEvVV3IrlVM_TuSKQ6-LNjJ3gfJEo1iJ56MsulJRwl0Fr9RBlWJCo44SpL3vVjpgDWyUCwFKf9YpauBJGGySUXBsyS2RnabzH4Zx1bPXxe3PKCtcfp",
+      weight: "500g",
+      price: 19.99,
+      quantity: 1
+    }
+  ]);
+
   const [formData, setFormData] = useState({
     email: "",
     phone: "",
@@ -36,30 +56,6 @@ export default function CartPage() {
   
   const [paymentStep, setPaymentStep] = useState<boolean>(false);
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
-
-  // Initialize with some mock items if cart is empty
-  useEffect(() => {
-    setCartItems([
-      {
-        id: "whole-malabar-pepper-250g",
-        name: "Whole Malabar Pepper",
-        categoryLabel: "Aromatic Spices",
-        image_url: "https://lh3.googleusercontent.com/aida-public/AB6AXuAshdTiRi-_UBhP-P8OMxRFOjHOuNXciAxdvzUd0NUw1rn93ecilcjqLzheMoN32l8jAthvHl2ESNhjmoE51r576Qz3jcxEZtUi9_y9uaG0ez2nSc0W7uJdnkaBz-OipwKG-66FaKLXPI71P3jSLmH5WF6ghVdXol1TLvny0lGzYLq37dBlHCzJ11Fur-eB7a0FgDUXeGTJulbSBE4gFR27WYFvAyE1F7EKoOYz3P8UjG5NN6XLsJ4P3cLezeZtbfYOJf7IdbIb",
-        weight: "250g",
-        price: 8.99,
-        quantity: 2
-      },
-      {
-        id: "king-cashews-500g",
-        name: "Artisanal Cashew Nuts",
-        categoryLabel: "Premium Nuts",
-        image_url: "https://lh3.googleusercontent.com/aida/AP1WRLsF4OpWDZ19gsKGTbeyKyoKwcMoDljzPa2EngO4cq2TgxrB7Ek2dQuyNr0D9gHqPWIUhc6SFj_0ueOS_tAHmmILwunxeoGr6pmyl_PgH10cVSmBqJVGTaQIhudLLHNZJSOf8AoEvVV3IrlVM_TuSKQ6-LNjJ3gfJEo1iJ56MsulJRwl0Fr9RBlWJCo44SpL3vVjpgDWyUCwFKf9YpauBJGGySUXBsyS2RnabzH4Zx1bPXxe3PKCtcfp",
-        weight: "500g",
-        price: 19.99,
-        quantity: 1
-      }
-    ]);
-  }, []);
 
   const updateQuantity = (itemId: string, val: number) => {
     setCartItems((items) =>

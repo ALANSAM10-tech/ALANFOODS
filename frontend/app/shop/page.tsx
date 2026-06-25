@@ -1,7 +1,7 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useState, useEffect, Suspense } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useState, Suspense } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -141,34 +141,18 @@ const categoryBanners = {
 };
 
 function ShopContent() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get("category");
+  const selectedCategory = categoryParam || "ALL";
 
   // State
-  const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [priceRange, setPriceRange] = useState<number>(50);
   const [sortBy, setSortBy] = useState<string>("default");
 
   // Track weight selection per product
   const [selectedWeights, setSelectedWeights] = useState<{ [productId: string]: string }>({});
-
-  useEffect(() => {
-    if (categoryParam) {
-      setSelectedCategory(categoryParam);
-    } else {
-      setSelectedCategory("ALL");
-    }
-  }, [categoryParam]);
-
-  // Set default weight for products
-  useEffect(() => {
-    const defaults: { [productId: string]: string } = {};
-    mockProducts.forEach((p) => {
-      defaults[p.id] = p.variants[0].weight;
-    });
-    setSelectedWeights(defaults);
-  }, []);
 
   const banner = categoryBanners[selectedCategory as keyof typeof categoryBanners] || categoryBanners.ALL;
 
@@ -253,7 +237,15 @@ function ShopContent() {
                 {["ALL", "NUTS", "SPICES", "DRY_FRUITS"].map((cat) => (
                   <button
                     key={cat}
-                    onClick={() => setSelectedCategory(cat)}
+                    onClick={() => {
+                      const params = new URLSearchParams(searchParams.toString());
+                      if (cat === "ALL") {
+                        params.delete("category");
+                      } else {
+                        params.set("category", cat);
+                      }
+                      router.push(`/shop?${params.toString()}`);
+                    }}
                     className={`text-left px-sm py-2 rounded-lg font-sans text-body-md transition-all font-medium ${
                       selectedCategory === cat
                         ? "bg-primary text-white font-semibold"

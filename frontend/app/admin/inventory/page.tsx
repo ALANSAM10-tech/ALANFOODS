@@ -376,7 +376,7 @@ export default function AdminInventory() {
                   <label className="font-sans text-xs uppercase font-bold text-on-surface-variant">Category</label>
                   <select
                     value={formCategory}
-                    onChange={(e) => setFormCategory(e.target.value as any)}
+                    onChange={(e) => setFormCategory(e.target.value as "NUTS" | "SPICES" | "DRY_FRUITS")}
                     className="w-full bg-white border border-outline-variant/40 rounded-lg px-md py-2 focus:ring-1 focus:ring-primary text-sm font-sans"
                   >
                     <option value="NUTS">Nuts</option>
