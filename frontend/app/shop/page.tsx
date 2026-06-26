@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -147,6 +147,7 @@ function ShopContent() {
   const selectedCategory = categoryParam || "ALL";
 
   // State
+  const [products, setProducts] = useState<Product[]>(mockProducts);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [priceRange, setPriceRange] = useState<number>(50);
   const [sortBy, setSortBy] = useState<string>("default");
@@ -154,10 +155,17 @@ function ShopContent() {
   // Track weight selection per product
   const [selectedWeights, setSelectedWeights] = useState<{ [productId: string]: string }>({});
 
+  useEffect(() => {
+    const saved = localStorage.getItem("mock_products");
+    if (saved) {
+      setProducts(JSON.parse(saved));
+    }
+  }, []);
+
   const banner = categoryBanners[selectedCategory as keyof typeof categoryBanners] || categoryBanners.ALL;
 
   // Filter products
-  const filteredProducts = mockProducts.filter((product) => {
+  const filteredProducts = products.filter((product) => {
     // Category match
     const categoryMatch = selectedCategory === "ALL" || product.category === selectedCategory;
     // Search match

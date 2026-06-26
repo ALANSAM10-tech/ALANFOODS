@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import Navbar from "@/components/Navbar";
@@ -134,14 +134,23 @@ const mockProducts: Product[] = [
 export default function ProductDetailPage() {
   const { productId } = useParams();
   
-  // Find product
-  const product = mockProducts.find((p) => p.id === productId);
-
   // States
-  const [selectedWeight, setSelectedWeight] = useState<string>(product?.variants[0]?.weight || "");
+  const [product, setProduct] = useState<Product | null>(null);
+  const [selectedWeight, setSelectedWeight] = useState<string>("");
   const [quantity, setQuantity] = useState<number>(1);
   const [activeTab, setActiveTab] = useState<"desc" | "source" | "nutri">("desc");
   const [addedAlert, setAddedAlert] = useState<boolean>(false);
+
+  // Load from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem("mock_products");
+    const db = saved ? JSON.parse(saved) : mockProducts;
+    const found = db.find((p: any) => p.id === productId);
+    if (found) {
+      setProduct(found);
+      setSelectedWeight(found.variants[0]?.weight || "");
+    }
+  }, [productId]);
 
 
   if (!product) {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 interface Variant {
@@ -26,9 +26,9 @@ const initialProducts: Product[] = [
     name: "Whole Malabar Pepper",
     category: "SPICES",
     categoryLabel: "Aromatic Spices",
-    description: "Ethically sourced whole black peppercorns from Wayanad, Kerala.",
+    description: "Ethically sourced whole black peppercorns from Wayanad, Kerala, rich in volatile oils. Sourced directly from our farmer cooperatives, sun-dried to perfection, and packaged airtight to lock in the spicy, woody aroma that has defined Malabar pepper for centuries.",
     image_url: "https://lh3.googleusercontent.com/aida-public/AB6AXuAshdTiRi-_UBhP-P8OMxRFOjHOuNXciAxdvzUd0NUw1rn93ecilcjqLzheMoN32l8jAthvHl2ESNhjmoE51r576Qz3jcxEZtUi9_y9uaG0ez2nSc0W7uJdnkaBz-OipwKG-66FaKLXPI71P3jSLmH5WF6ghVdXol1TLvny0lGzYLq37dBlHCzJ11Fur-eB7a0FgDUXeGTJulbSBE4gFR27WYFvAyE1F7EKoOYz3P8UjG5NN6XLsJ4P3cLezeZtbfYOJf7IdbIb",
-    origin: "Kerala, India",
+    origin: "Wayanad, Kerala, India",
     variants: [
       { weight: "250g", price: 8.99, stock: 120 },
       { weight: "500g", price: 15.99, stock: 85 },
@@ -40,13 +40,13 @@ const initialProducts: Product[] = [
     name: "Green Cardamom Pods",
     category: "SPICES",
     categoryLabel: "Aromatic Spices",
-    description: "Vibrant green cardamom pods from the Cardamom Hills in Idukki, Kerala.",
+    description: "Vibrant green cardamom pods from the Cardamom Hills in Idukki, Kerala. Intense floral aroma. Handpicked at the perfect maturity level, sorted by size, and dried carefully to retain their bright green color and sweet-spicy volatile oils.",
     image_url: "https://lh3.googleusercontent.com/aida-public/AB6AXuArS_fSeDPFtvjAXmzbgzJNzEieftqb9C-i8uiUy51N4BX8Xtj4VqG1i3TSrG5vjUy-7NqrSrC9A--611uKjB-y6uM-wYrIIdE99qLpvSqDH3kfWqQev0CFI7NKBekQIkKf5icnSocsvWdNegxIp2YF14ZD30VyXX6aw4PVtd_Vsl-fcN5U87qUmPgZ4OMYEG8Gkf9HbqFLva8h4FLembldYMdyyoVDqOqnZfcJUbDSmNBlNr3A-BIRxn-3ZHJ33juSQMotqjdlapE",
-    origin: "Kerala, India",
+    origin: "Idukki, Kerala, India",
     variants: [
-      { weight: "250g", price: 12.99, stock: 4 }, // low stock
+      { weight: "250g", price: 12.99, stock: 4 },
       { weight: "500g", price: 22.99, stock: 12 },
-      { weight: "1kg", price: 42.99, stock: 0 } // out of stock
+      { weight: "1kg", price: 42.99, stock: 0 }
     ]
   },
   {
@@ -54,7 +54,7 @@ const initialProducts: Product[] = [
     name: "Premium Roasted Almonds",
     category: "NUTS",
     categoryLabel: "Premium Nuts",
-    description: "California grade-A almonds, dry-roasted and lightly salted.",
+    description: "California grade-A almonds, dry-roasted and lightly salted to preserve absolute crunch. High in protein, vitamin E, and healthy fats, these nuts are a great energy-boosting snack.",
     image_url: "https://lh3.googleusercontent.com/aida-public/AB6AXuBi1RI2BThysC0dJfCYLn6u7i-LHLKQv6877RwoYAgeSE7gbC_D_keLjhssHoOqurYKAtm0Ysgj53vpfVlHl5HCDmTUXeiVyuz50ahbE8lW0b4htzx28aIUF2IyPEWqZKWhcTwBrMRGaZpG8vcudCyU5bJ9LDAM91kj-ygWGO_oUdBaFoe4YPPses8XHxpPKVCRw-FsX_yd8B4xSEtQ3bB7E4XBQpQKmXRGHk9ssMlnz2T1oKyuPqWudDF47a305g2Sth6rAE6u",
     origin: "California, USA",
     variants: [
@@ -62,11 +62,53 @@ const initialProducts: Product[] = [
       { weight: "500g", price: 17.99, stock: 110 },
       { weight: "1kg", price: 32.99, stock: 95 }
     ]
+  },
+  {
+    id: "king-cashews",
+    name: "Artisanal Cashew Nuts",
+    category: "NUTS",
+    categoryLabel: "Premium Nuts",
+    description: "Premium large W180 size cashews, buttery, rich, and raw. Handpicked and minimally processed to preserve their natural sweetness, smooth texture, and nutrient value.",
+    image_url: "https://lh3.googleusercontent.com/aida/AP1WRLsF4OpWDZ19gsKGTbeyKyoKwcMoDljzPa2EngO4cq2TgxrB7Ek2dQuyNr0D9gHqPWIUhc6SFj_0ueOS_tAHmmILwunxeoGr6pmyl_PgH10cVSmBqJVGTaQIhudLLHNZJSOf8AoEvVV3IrlVM_TuSKQ6-LNjJ3gfJEo1iJ56MsulJRwl0Fr9RBlWJCo44SpL3vVjpgDWyUCwFKf9YpauBJGGySUXBsyS2RnabzH4Zx1bPXxe3PKCtcfp",
+    origin: "Goa, India",
+    variants: [
+      { weight: "250g", price: 10.99, stock: 150 },
+      { weight: "500g", price: 19.99, stock: 90 },
+      { weight: "1kg", price: 36.99, stock: 45 }
+    ]
+  },
+  {
+    id: "sun-dried-apricots",
+    name: "Mediterranean Sun-Dried Apricots",
+    category: "DRY_FRUITS",
+    categoryLabel: "Dried Fruits",
+    description: "Naturally sun-dried sweet apricots packed with vitamins and loaded with fiber. These apricots retain their soft, chewy texture and deep orange glow without sulfur dioxide treatments.",
+    image_url: "https://lh3.googleusercontent.com/aida-public/AB6AXuC8w50Uh6StssQNUiIC93hweY20ih9LA62D957Zbu56Zv7ZfIemyLEs-yyj-fo9dW9ULfWjTk1KrstJpwMVkFEZbW-d2HvHCZcpPS2_gvffSGBr0wkc1dVQ_6hFXP2r59rwe74RcWkzllBz-6yPFw9XXieixhW8HmvWWmyVwAGO509h6BMZEAa3f3Hffe4dyiGoh-2WmUosxET7SeuF7vKGXcK6gFyxX95_GH7XeZtCwf_kaTQnLqsAcg42lL-I-uRPdftAosbB",
+    origin: "Malatya, Turkey",
+    variants: [
+      { weight: "250g", price: 7.99, stock: 180 },
+      { weight: "500g", price: 14.99, stock: 95 },
+      { weight: "1kg", price: 26.99, stock: 30 }
+    ]
+  },
+  {
+    id: "medjool-dates",
+    name: "Premium Medjool Dates",
+    category: "DRY_FRUITS",
+    categoryLabel: "Dried Fruits",
+    description: "Plump, organic Medjool dates with a rich, caramel-like texture and sweet natural flavor. Sourced from organic palm groves, hand-sorted for quality, and kept cool to maintain their soft, juicy pulp.",
+    image_url: "https://lh3.googleusercontent.com/aida-public/AB6AXuBi1RI2BThysC0dJfCYLn6u7i-LHLKQv6877RwoYAgeSE7gbC_D_keLjhssHoOqurYKAtm0Ysgj53vpfVlHl5HCDmTUXeiVyuz50ahbE8lW0b4htzx28aIUF2IyPEWqZKWhcTwBrMRGaZpG8vcudCyU5bJ9LDAM91kj-ygWGO_oUdBaFoe4YPPses8XHxpPKVCRw-FsX_yd8B4xSEtQ3bB7E4XBQpQKmXRGHk9ssMlnz2T1oKyuPqWudDF47a305g2Sth6rAE6u",
+    origin: "Jordan Valley",
+    variants: [
+      { weight: "250g", price: 11.99, stock: 140 },
+      { weight: "500g", price: 21.99, stock: 75 },
+      { weight: "1kg", price: 39.99, stock: 25 }
+    ]
   }
 ];
 
 export default function AdminInventory() {
-  const [products, setProducts] = useState<Product[]>(initialProducts);
+  const [products, setProducts] = useState<Product[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("ALL");
   
@@ -79,12 +121,30 @@ export default function AdminInventory() {
   const [formCategory, setFormCategory] = useState<"NUTS" | "SPICES" | "DRY_FRUITS">("NUTS");
   const [formDescription, setFormDescription] = useState("");
   const [formOrigin, setFormOrigin] = useState("");
+  const [formImageUrl, setFormImageUrl] = useState("");
   const [formPrice250, setFormPrice250] = useState(0);
   const [formStock250, setFormStock250] = useState(0);
   const [formPrice500, setFormPrice500] = useState(0);
   const [formStock500, setFormStock500] = useState(0);
   const [formPrice1kg, setFormPrice1kg] = useState(0);
   const [formStock1kg, setFormStock1kg] = useState(0);
+
+  // Load from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem("mock_products");
+    if (saved) {
+      setProducts(JSON.parse(saved));
+    } else {
+      setProducts(initialProducts);
+      localStorage.setItem("mock_products", JSON.stringify(initialProducts));
+    }
+  }, []);
+
+  // Persist helper
+  const updateProductsList = (newProducts: Product[]) => {
+    setProducts(newProducts);
+    localStorage.setItem("mock_products", JSON.stringify(newProducts));
+  };
 
   // Statistics
   const totalSKUs = products.length;
@@ -97,6 +157,7 @@ export default function AdminInventory() {
     setFormCategory("NUTS");
     setFormDescription("");
     setFormOrigin("");
+    setFormImageUrl("");
     setFormPrice250(9.99);
     setFormStock250(100);
     setFormPrice500(18.99);
@@ -112,6 +173,7 @@ export default function AdminInventory() {
     setFormCategory(p.category);
     setFormDescription(p.description);
     setFormOrigin(p.origin);
+    setFormImageUrl(p.image_url);
 
     const v250 = p.variants.find(v => v.weight === "250g") || { price: 0, stock: 0 };
     const v500 = p.variants.find(v => v.weight === "500g") || { price: 0, stock: 0 };
@@ -129,7 +191,7 @@ export default function AdminInventory() {
 
   const handleDelete = (id: string) => {
     if (confirm("Are you sure you want to delete this product?")) {
-      setProducts(products.filter(p => p.id !== id));
+      updateProductsList(products.filter(p => p.id !== id));
     }
   };
 
@@ -149,7 +211,7 @@ export default function AdminInventory() {
       categoryLabel: categoryLabels[formCategory],
       description: formDescription,
       origin: formOrigin,
-      image_url: editingProduct?.image_url || "https://lh3.googleusercontent.com/aida-public/AB6AXuAshdTiRi-_UBhP-P8OMxRFOjHOuNXciAxdvzUd0NUw1rn93ecilcjqLzheMoN32l8jAthvHl2ESNhjmoE51r576Qz3jcxEZtUi9_y9uaG0ez2nSc0W7uJdnkaBz-OipwKG-66FaKLXPI71P3jSLmH5WF6ghVdXol1TLvny0lGzYLq37dBlHCzJ11Fur-eB7a0FgDUXeGTJulbSBE4gFR27WYFvAyE1F7EKoOYz3P8UjG5NN6XLsJ4P3cLezeZtbfYOJf7IdbIb",
+      image_url: formImageUrl || "https://lh3.googleusercontent.com/aida-public/AB6AXuAshdTiRi-_UBhP-P8OMxRFOjHOuNXciAxdvzUd0NUw1rn93ecilcjqLzheMoN32l8jAthvHl2ESNhjmoE51r576Qz3jcxEZtUi9_y9uaG0ez2nSc0W7uJdnkaBz-OipwKG-66FaKLXPI71P3jSLmH5WF6ghVdXol1TLvny0lGzYLq37dBlHCzJ11Fur-eB7a0FgDUXeGTJulbSBE4gFR27WYFvAyE1F7EKoOYz3P8UjG5NN6XLsJ4P3cLezeZtbfYOJf7IdbIb",
       variants: [
         { weight: "250g", price: Number(formPrice250), stock: Number(formStock250) },
         { weight: "500g", price: Number(formPrice500), stock: Number(formStock500) },
@@ -158,9 +220,9 @@ export default function AdminInventory() {
     };
 
     if (editingProduct) {
-      setProducts(products.map(p => p.id === editingProduct.id ? newProduct : p));
+      updateProductsList(products.map(p => p.id === editingProduct.id ? newProduct : p));
     } else {
-      setProducts([newProduct, ...products]);
+      updateProductsList([newProduct, ...products]);
     }
     
     setIsModalOpen(false);
@@ -398,12 +460,14 @@ export default function AdminInventory() {
                   />
                 </div>
                 <div className="space-y-xs">
-                  <label className="font-sans text-xs uppercase font-bold text-on-surface-variant">Image URL</label>
+                  <label className="font-sans text-xs uppercase font-bold text-on-surface-variant">Cover Image URL</label>
                   <input
-                    type="text"
-                    disabled
+                    type="url"
+                    required
+                    value={formImageUrl}
+                    onChange={(e) => setFormImageUrl(e.target.value)}
                     placeholder="https://images.unsplash.com/..."
-                    className="w-full bg-surface-container-low border border-outline-variant/40 rounded-lg px-md py-2 text-sm font-sans opacity-50 cursor-not-allowed"
+                    className="w-full bg-white border border-outline-variant/40 rounded-lg px-md py-2 text-sm font-sans focus:ring-1 focus:ring-primary focus:border-primary text-on-surface"
                   />
                 </div>
               </div>
