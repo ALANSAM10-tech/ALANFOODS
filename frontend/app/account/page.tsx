@@ -21,6 +21,16 @@ function AccountContent() {
   // State
   const [orders, setOrders] = useState<Order[]>([]);
 
+  // Profile state
+  const [profile, setProfile] = useState({
+    name: "Alan Mathew",
+    email: "alan.mathew@gmail.com",
+    phone: "+91 98765 43210",
+    address: "123 Organic Lane, Green Valley, Kerala, India - 682001"
+  });
+  const [isEditing, setIsEditing] = useState(false);
+  const [editForm, setEditForm] = useState({ ...profile });
+
   useEffect(() => {
     // Read from localStorage
     const saved = localStorage.getItem("mock_orders");
@@ -41,7 +51,30 @@ function AccountContent() {
       localStorage.setItem("mock_orders", JSON.stringify(initialOrders));
       setTimeout(() => setOrders(initialOrders), 0);
     }
+
+    const savedProfile = localStorage.getItem("user_profile");
+    if (savedProfile) {
+      try {
+        const parsedProfile = JSON.parse(savedProfile);
+        setProfile(parsedProfile);
+        setEditForm(parsedProfile);
+      } catch (e) {
+        console.error("Failed to parse saved profile", e);
+      }
+    }
   }, []);
+
+  const handleProfileChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setEditForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const saveProfile = (e: React.FormEvent) => {
+    e.preventDefault();
+    setProfile(editForm);
+    localStorage.setItem("user_profile", JSON.stringify(editForm));
+    setIsEditing(false);
+  };
 
   return (
     <>
@@ -71,32 +104,130 @@ function AccountContent() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-lg items-start">
           {/* User Profile Info */}
-          <div className="lg:col-span-4 bg-white p-lg rounded-2xl border border-outline-variant/10 shadow-sm space-y-md">
-            <div className="flex items-center gap-md pb-md border-b border-outline-variant/10">
-              <div className="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center font-serif text-[28px] font-bold border border-primary/20">
-                A
-              </div>
-              <div>
-                <h2 className="font-serif text-headline-md font-bold text-on-surface">Alan Mathew</h2>
-                <p className="font-sans text-xs text-on-surface-variant font-medium">alan.mathew@gmail.com</p>
-              </div>
-            </div>
-            
-            <div className="space-y-sm font-sans text-body-md">
-              <div className="flex justify-between font-semibold">
-                <span className="text-on-surface-variant">Membership</span>
-                <span className="text-secondary uppercase">Gold Tier</span>
-              </div>
-              <div className="flex justify-between font-semibold">
-                <span className="text-on-surface-variant">Total Orders</span>
-                <span className="text-on-surface">{orders.length}</span>
-              </div>
-            </div>
+          <div className="lg:col-span-5 bg-white p-lg rounded-2xl border border-outline-variant/10 shadow-sm space-y-md">
+            {!isEditing ? (
+              <>
+                <div className="flex items-center justify-between pb-md border-b border-outline-variant/10">
+                  <div className="flex items-center gap-md">
+                    <div className="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center font-serif text-[28px] font-bold border border-primary/20">
+                      {profile.name.charAt(0).toUpperCase()}
+                    </div>
+                    <div>
+                      <h2 className="font-serif text-headline-md font-bold text-on-surface">{profile.name}</h2>
+                      <p className="font-sans text-xs text-on-surface-variant font-medium">{profile.email}</p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setEditForm({ ...profile });
+                      setIsEditing(true);
+                    }}
+                    className="flex items-center gap-xs font-sans text-label-sm text-primary border border-primary/20 hover:bg-primary/5 px-sm py-1.5 rounded-lg transition-all font-semibold"
+                  >
+                    <span className="material-symbols-outlined text-[16px]">edit</span>
+                    Edit
+                  </button>
+                </div>
+                
+                <div className="space-y-md font-sans text-body-md">
+                  <div className="space-y-xs pb-sm border-b border-outline-variant/5">
+                    <span className="block text-xs uppercase font-bold text-on-surface-variant tracking-wider">Phone Number</span>
+                    <span className="text-on-surface font-medium">{profile.phone || "Not provided"}</span>
+                  </div>
+                  <div className="space-y-xs pb-sm border-b border-outline-variant/5">
+                    <span className="block text-xs uppercase font-bold text-on-surface-variant tracking-wider">Shipping Address</span>
+                    <span className="text-on-surface font-medium block leading-relaxed">{profile.address || "Not provided"}</span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-sm pt-xs">
+                    <div className="bg-surface-container-low p-sm rounded-xl border border-outline-variant/5">
+                      <span className="block text-[10px] uppercase font-bold text-on-surface-variant tracking-wider mb-xs">Membership</span>
+                      <span className="text-secondary font-bold uppercase text-xs">Gold Tier</span>
+                    </div>
+                    <div className="bg-surface-container-low p-sm rounded-xl border border-outline-variant/5">
+                      <span className="block text-[10px] uppercase font-bold text-on-surface-variant tracking-wider mb-xs">Total Orders</span>
+                      <span className="text-on-surface font-bold text-xs">{orders.length}</span>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <form onSubmit={saveProfile} className="space-y-md">
+                <div className="flex items-center gap-sm pb-md border-b border-outline-variant/10">
+                  <span className="material-symbols-outlined text-primary text-[24px]">manage_accounts</span>
+                  <h2 className="font-serif text-headline-md font-bold text-on-surface">Edit Profile Details</h2>
+                </div>
+
+                <div className="space-y-sm font-sans">
+                  <div className="space-y-xs">
+                    <label className="text-xs uppercase font-bold text-on-surface-variant">Full Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      value={editForm.name}
+                      onChange={handleProfileChange}
+                      className="w-full bg-white border border-outline-variant/40 rounded-lg px-md py-2 focus:ring-1 focus:ring-primary focus:border-primary text-sm font-sans"
+                    />
+                  </div>
+
+                  <div className="space-y-xs">
+                    <label className="text-xs uppercase font-bold text-on-surface-variant">Email Address</label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      value={editForm.email}
+                      onChange={handleProfileChange}
+                      className="w-full bg-white border border-outline-variant/40 rounded-lg px-md py-2 focus:ring-1 focus:ring-primary focus:border-primary text-sm font-sans"
+                    />
+                  </div>
+
+                  <div className="space-y-xs">
+                    <label className="text-xs uppercase font-bold text-on-surface-variant">Phone Number</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={editForm.phone}
+                      onChange={handleProfileChange}
+                      className="w-full bg-white border border-outline-variant/40 rounded-lg px-md py-2 focus:ring-1 focus:ring-primary focus:border-primary text-sm font-sans"
+                    />
+                  </div>
+
+                  <div className="space-y-xs">
+                    <label className="text-xs uppercase font-bold text-on-surface-variant">Shipping Address</label>
+                    <textarea
+                      name="address"
+                      rows={3}
+                      value={editForm.address}
+                      onChange={handleProfileChange}
+                      className="w-full bg-white border border-outline-variant/40 rounded-lg px-md py-2 focus:ring-1 focus:ring-primary focus:border-primary text-sm font-sans resize-none leading-relaxed"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex gap-sm pt-xs">
+                  <button
+                    type="button"
+                    onClick={() => setIsEditing(false)}
+                    className="flex-1 border border-outline-variant/30 text-on-surface-variant hover:bg-surface-container py-2 rounded-lg font-sans text-label-md font-bold transition-all text-center"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="flex-1 bg-primary text-white hover:brightness-110 py-2 rounded-lg font-sans text-label-md font-bold transition-all text-center shadow-sm"
+                  >
+                    Save Changes
+                  </button>
+                </div>
+              </form>
+            )}
 
             <div className="pt-md border-t border-outline-variant/10">
               <Link
                 href="/admin/inventory"
-                className="w-full flex items-center justify-center gap-xs border border-primary text-primary hover:bg-primary hover:text-white py-2 rounded-lg font-sans text-label-md font-bold transition-all"
+                className="w-full flex items-center justify-center gap-xs border border-primary text-primary hover:bg-primary hover:text-white py-2.5 rounded-lg font-sans text-label-md font-bold transition-all"
               >
                 <span className="material-symbols-outlined text-[18px]">admin_panel_settings</span>
                 Go to Admin Dashboard
@@ -105,7 +236,7 @@ function AccountContent() {
           </div>
 
           {/* Order History */}
-          <div className="lg:col-span-8 space-y-lg">
+          <div className="lg:col-span-7 space-y-lg">
             <h2 className="font-serif text-headline-lg font-bold text-on-surface">Order History</h2>
 
             {orders.length === 0 ? (
