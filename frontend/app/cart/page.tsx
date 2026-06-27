@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -135,7 +136,9 @@ export default function CartPage() {
                 >
                   {/* Image + Info */}
                   <div className="flex gap-md items-center flex-1 min-w-0">
-                    <img
+                    <Image
+                      width={80}
+                      height={80}
                       src={item.image_url}
                       alt={item.name}
                       className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl bg-surface-container-low flex-shrink-0"

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Variant {
   weight: string;
@@ -353,7 +354,7 @@ export default function AdminInventory() {
                 {filteredProducts.map((p) => (
                   <tr key={p.id} className="hover:bg-surface-container-low/30 transition-colors">
                     <td className="p-md flex items-center gap-sm">
-                      <img src={p.image_url} alt={p.name} className="w-12 h-12 object-cover rounded-lg border border-outline-variant/10 bg-surface-container-low" />
+                      <Image width={48} height={48} src={p.image_url} alt={p.name} className="w-12 h-12 object-cover rounded-lg border border-outline-variant/10 bg-surface-container-low" />
                       <div>
                         <span className="font-bold text-on-surface block text-sm">{p.name}</span>
                         <span className="text-[10px] text-on-surface-variant uppercase font-bold">{p.id}</span>

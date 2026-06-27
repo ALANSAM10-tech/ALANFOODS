@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -39,8 +40,9 @@ export default function Home() {
             <div className="relative order-1 md:order-2">
               <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-secondary opacity-5 rounded-full blur-3xl"></div>
               <div className="relative w-full aspect-square bg-white rounded-2xl shadow-xl overflow-hidden p-gutter">
-                <img
-                  className="w-full h-full object-cover rounded-lg"
+                <Image
+                  fill
+                  className="object-cover rounded-lg"
                   alt="Alan Foods spices selection"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAshdTiRi-_UBhP-P8OMxRFOjHOuNXciAxdvzUd0NUw1rn93ecilcjqLzheMoN32l8jAthvHl2ESNhjmoE51r576Qz3jcxEZtUi9_y9uaG0ez2nSc0W7uJdnkaBz-OipwKG-66FaKLXPI71P3jSLmH5WF6ghVdXol1TLvny0lGzYLq37dBlHCzJ11Fur-eB7a0FgDUXeGTJulbSBE4gFR27WYFvAyE1F7EKoOYz3P8UjG5NN6XLsJ4P3cLezeZtbfYOJf7IdbIb"
                 />
@@ -111,8 +113,9 @@ export default function Home() {
               {/* Category 1 */}
               <Link href="/shop?category=SPICES" className="group relative overflow-hidden rounded-2xl aspect-[3/2] md:aspect-[4/5] shadow-sm hover:shadow-xl transition-all cursor-pointer">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
-                <img
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                <Image
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                   alt="Aromatic Spices"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuArS_fSeDPFtvjAXmzbgzJNzEieftqb9C-i8uiUy51N4BX8Xtj4VqG1i3TSrG5vjUy-7NqrSrC9A--611uKjB-y6uM-wYrIIdE99qLpvSqDH3kfWqQev0CFI7NKBekQIkKf5icnSocsvWdNegxIp2YF14ZD30VyXX6aw4PVtd_Vsl-fcN5U87qUmPgZ4OMYEG8Gkf9HbqFLva8h4FLembldYMdyyoVDqOqnZfcJUbDSmNBlNr3A-BIRxn-3ZHJ33juSQMotqjdlapE"
                 />
@@ -127,8 +130,9 @@ export default function Home() {
               {/* Category 2 */}
               <Link href="/shop?category=DRY_FRUITS" className="group relative overflow-hidden rounded-2xl aspect-[3/2] md:aspect-[4/5] shadow-sm hover:shadow-xl transition-all cursor-pointer">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
-                <img
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                <Image
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                   alt="Dried Fruits"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8w50Uh6StssQNUiIC93hweY20ih9LA62D957Zbu56Zv7ZfIemyLEs-yyj-fo9dW9ULfWjTk1KrstJpwMVkFEZbW-d2HvHCZcpPS2_gvffSGBr0wkc1dVQ_6hFXP2r59rwe74RcWkzllBz-6yPFw9XXieixhW8HmvWWmyVwAGO509h6BMZEAa3f3Hffe4dyiGoh-2WmUosxET7SeuF7vKGXcK6gFyxX95_GH7XeZtCwf_kaTQnLqsAcg42lL-I-uRPdftAosbB"
                 />
@@ -143,8 +147,9 @@ export default function Home() {
               {/* Category 3 */}
               <Link href="/shop?category=NUTS" className="group relative overflow-hidden rounded-2xl aspect-[3/2] md:aspect-[4/5] shadow-sm hover:shadow-xl transition-all cursor-pointer">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
-                <img
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                <Image
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                   alt="Premium Nuts"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi1RI2BThysC0dJfCYLn6u7i-LHLKQv6877RwoYAgeSE7gbC_D_keLjhssHoOqurYKAtm0Ysgj53vpfVlHl5HCDmTUXeiVyuz50ahbE8lW0b4htzx28aIUF2IyPEWqZKWhcTwBrMRGaZpG8vcudCyU5bJ9LDAM91kj-ygWGO_oUdBaFoe4YPPses8XHxpPKVCRw-FsX_yd8B4xSEtQ3bB7E4XBQpQKmXRGHk9ssMlnz2T1oKyuPqWudDF47a305g2Sth6rAE6u"
                 />

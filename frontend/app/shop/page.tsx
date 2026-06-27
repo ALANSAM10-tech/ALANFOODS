@@ -3,6 +3,7 @@
 import { useSearchParams, useRouter } from "next/navigation";
 import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -363,10 +364,11 @@ function ShopContent() {
                     >
                       {/* Product Image */}
                       <Link href={`/shop/${product.id}`} className="block relative aspect-square overflow-hidden bg-surface-container-low">
-                        <img
+                        <Image
+                          fill
                           src={product.image_url}
                           alt={product.name}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                         <div className="absolute top-sm left-sm bg-white/95 backdrop-blur-sm px-xs py-base rounded text-[10px] uppercase font-bold tracking-wider text-secondary border border-secondary/15">
                           {product.origin}

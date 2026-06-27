@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -43,11 +44,12 @@ export default function About() {
           </div>
           <div className="md:col-span-7 order-1 md:order-2">
             <div className="aspect-[4/5] md:aspect-[16/10] bg-white p-sm shadow-xl relative overflow-hidden rounded-xl border border-outline-variant/10">
-              <img
-                className="w-full h-full object-cover rounded-lg"
-                alt="Traditional cooking spices prep"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUhHQ5FyqkJlViX7WVmcZNnjq9eqJbuyvv51gTUWinnxwDHipogdFQSu6H2R0r_jKbFTVFk_Ys_vPy8uU2ZooqYvyMX2iF7mMu28CcShL0JlSZ1cziKptK4WZpctDyTmdZnVqr7ZPOdzw47YfPNRPOb4x3999BmjogMPpHGqDyyl91VdKo6ZnmjsasgFnO_qbCEKwjs5_2GT8FZZ1O0omGpiO7jtnVKKZqjvHyGjR2vzHPhqjDOCJgBqdBEIajHRKX1uK85KWS"
-              />
+                <Image
+                  fill
+                  className="object-cover rounded-lg"
+                  alt="Traditional cooking spices prep"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUhHQ5FyqkJlViX7WVmcZNnjq9eqJbuyvv51gTUWinnxwDHipogdFQSu6H2R0r_jKbFTVFk_Ys_vPy8uU2ZooqYvyMX2iF7mMu28CcShL0JlSZ1cziKptK4WZpctDyTmdZnVqr7ZPOdzw47YfPNRPOb4x3999BmjogMPpHGqDyyl91VdKo6ZnmjsasgFnO_qbCEKwjs5_2GT8FZZ1O0omGpiO7jtnVKKZqjvHyGjR2vzHPhqjDOCJgBqdBEIajHRKX1uK85KWS"
+                />
               <div className="absolute bottom-md left-md bg-white/90 backdrop-blur-sm p-base px-sm rounded shadow-sm border border-outline-variant/20">
                 <span className="font-sans text-label-sm text-primary font-bold">TRADITIONAL METHODS</span>
               </div>
@@ -68,8 +70,9 @@ export default function About() {
               {/* Bento Card 1 */}
               <div className="md:col-span-2 md:row-span-2 bg-white group overflow-hidden relative shadow-sm hover:shadow-lg transition-all duration-300 rounded-2xl aspect-[4/3] md:aspect-auto md:min-h-[500px]">
                 <div className="absolute inset-0 z-0">
-                  <img
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  <Image
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
                     alt="Organic Orchards"
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd8mphqGBpr5rJuZZiHAYsLAZOHlDLT7vj-uNa50llpww1IQlg9ePr7YdayfHp02ejmIM6aTTVfGd9k7U4hPCuXKikVRLHuW_ApIHHP0pWPPcFzWLHNS6OuWdpCy26imsXF4836zt0I_qsAWbqFmovANfji7o4PPNl7yvSWErn2-6Abdee2GhfbbUus9NCPTv6EGZGeavuBD2Otl5vQKwu_BdzOzHIvckn7bHcG8gzH5W803SZc2_EKaOKCT8ZbwWBkkhxcEmn"
                   />
@@ -90,9 +93,10 @@ export default function About() {
                     Every batch undergoes rigorous 5-step purity testing for toxins and moisture.
                   </p>
                 </div>
-                <div className="w-full md:w-1/2 overflow-hidden aspect-video md:aspect-auto">
-                  <img
-                    className="w-full h-full object-cover"
+                <div className="w-full md:w-1/2 overflow-hidden aspect-video md:aspect-auto relative">
+                  <Image
+                    fill
+                    className="object-cover"
                     alt="Quality checking"
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCXGtZApNB3gpQIBVNsh18ixSD03mHHdNCkbNhPWkgVNHXTBlYvH7KWIQaEW8oCPJixW0y0UGzGPTRw2gO1zJtmgSQvWEmMqeYRYXpY-bgKpJOMPSQvCS4BKDo9NdX9YuYgEb7rfTzPWqchwEDy2cg5TWAMghHXVQXIWzr-3KwXO6UlWnFM2YqcRvTx8Dmbas2lb7WA9deRBKb4AsKalyQg0tMM4EUF5oTr736Jkhu9d9tanQV_4qnWQZBRxDMdbmKIewm82Mi"
                   />
@@ -123,9 +127,10 @@ export default function About() {
             &quot;Our mission is to return to the essence of food. No additives, no compromises—just the pure, vibrant energy of the earth.&quot;
           </blockquote>
           <div className="flex flex-col items-center">
-            <div className="w-16 h-16 rounded-full overflow-hidden mb-sm border-2 border-primary-container/30">
-              <img
-                className="w-full h-full object-cover"
+            <div className="w-16 h-16 rounded-full overflow-hidden mb-sm border-2 border-primary-container/30 relative">
+              <Image
+                fill
+                className="object-cover"
                 alt="ALAN MATHEW Founder"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG-U3eOFeutvNgOZIENspZuyAEBvIQENwRlgo07kmhCGDZ5Wvv5BJKQrq3LSenYNjoHpNX5SvJRxJXlWcAu3Qoc4JNymadBCfqZjoZ_sbxeknVaz1WuleK5nKbeHjwm4EKLExjuXbuwMufx_gOR2IoZoq8G1HhDaKEhAxVXBLjzXlzKKX2H3a6jeuKpXLPNJBJwI00Pol6SgSsbQ2TRKYo-jtscXkaB6rHSgok2Q6l450w1AJ7cQIyKrPk_NKXlZgcRFdMRSW6"
               />
@@ -139,7 +144,9 @@ export default function About() {
         <section className="px-margin-mobile md:px-margin-desktop max-w-[1280px] mx-auto py-xl border-t border-outline-variant/15">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
             <div className="order-2 md:order-1">
-              <img
+              <Image
+                width={900}
+                height={600}
                 className="w-full rounded-xl shadow-lg border border-outline-variant/10"
                 alt="Kerala Spice Route Map"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMlknCfib-fNDfJDIq6-9nGQF2mSvMgch6V4I02UpK9vNcVX6bYDvSoBAy65OZ0oZEtCe5nAafgQ5c9KtgIUi1vvJlz39ZByu-xMQR_-cyRsMbTuGOPUhlPKZMkcxluGzqIKpQUN4e8lqSvfSxypykBc-6dECufkaxh3pkv_NNuBOO5lLl0B0HcVY0eJFmvUyS19xR5Tw1tl4PVa2LEEe493PMw95cREsfNh2S_kf_LwZ5PmAyx5jpRApN62cehsR0n4JeR4g8"

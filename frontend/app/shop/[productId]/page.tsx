@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -216,8 +217,9 @@ export default function ProductDetailPage() {
             {/* Gallery */}
             <div className="space-y-md">
               <div className="bg-white rounded-2xl overflow-hidden aspect-square flex items-center justify-center p-lg shadow-sm border border-outline-variant/10 relative">
-                <img
-                  className="w-full h-full object-cover rounded-xl"
+                <Image
+                  fill
+                  className="object-cover rounded-xl"
                   src={product.image_url}
                   alt={product.name}
                 />
