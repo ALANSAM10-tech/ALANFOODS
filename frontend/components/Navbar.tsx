@@ -14,10 +14,10 @@ export default function Navbar({ cartCount = 0 }: NavbarProps) {
     <nav className="fixed top-0 w-full z-50 shadow-sm bg-white/80 backdrop-blur-md dark:bg-surface-dim/80 h-20 border-b border-surface-container-high/50 transition-all duration-300">
       <div className="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-[1280px] mx-auto h-full">
         {/* Logo */}
-        <div className="flex items-center gap-md">
+        <div className="flex items-center gap-md flex-shrink-0">
           <Link
             href="/"
-            className="font-serif text-headline-md font-bold text-primary dark:text-primary-container tracking-tight"
+            className="font-serif text-headline-md font-bold text-primary dark:text-primary-container tracking-tight whitespace-nowrap"
           >
             ALAN FOODS
           </Link>
