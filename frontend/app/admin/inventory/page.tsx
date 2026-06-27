@@ -31,9 +31,9 @@ const initialProducts: Product[] = [
     image_url: "https://lh3.googleusercontent.com/aida-public/AB6AXuAshdTiRi-_UBhP-P8OMxRFOjHOuNXciAxdvzUd0NUw1rn93ecilcjqLzheMoN32l8jAthvHl2ESNhjmoE51r576Qz3jcxEZtUi9_y9uaG0ez2nSc0W7uJdnkaBz-OipwKG-66FaKLXPI71P3jSLmH5WF6ghVdXol1TLvny0lGzYLq37dBlHCzJ11Fur-eB7a0FgDUXeGTJulbSBE4gFR27WYFvAyE1F7EKoOYz3P8UjG5NN6XLsJ4P3cLezeZtbfYOJf7IdbIb",
     origin: "Wayanad, Kerala, India",
     variants: [
-      { weight: "250g", price: 8.99, stock: 120 },
-      { weight: "500g", price: 15.99, stock: 85 },
-      { weight: "1kg", price: 28.99, stock: 40 }
+      { weight: "250g", price: 250, stock: 120 },
+      { weight: "500g", price: 480, stock: 85 },
+      { weight: "1kg", price: 900, stock: 40 }
     ]
   },
   {
@@ -45,9 +45,9 @@ const initialProducts: Product[] = [
     image_url: "https://lh3.googleusercontent.com/aida-public/AB6AXuArS_fSeDPFtvjAXmzbgzJNzEieftqb9C-i8uiUy51N4BX8Xtj4VqG1i3TSrG5vjUy-7NqrSrC9A--611uKjB-y6uM-wYrIIdE99qLpvSqDH3kfWqQev0CFI7NKBekQIkKf5icnSocsvWdNegxIp2YF14ZD30VyXX6aw4PVtd_Vsl-fcN5U87qUmPgZ4OMYEG8Gkf9HbqFLva8h4FLembldYMdyyoVDqOqnZfcJUbDSmNBlNr3A-BIRxn-3ZHJ33juSQMotqjdlapE",
     origin: "Idukki, Kerala, India",
     variants: [
-      { weight: "250g", price: 12.99, stock: 4 },
-      { weight: "500g", price: 22.99, stock: 12 },
-      { weight: "1kg", price: 42.99, stock: 0 }
+      { weight: "250g", price: 650, stock: 4 },
+      { weight: "500g", price: 1200, stock: 12 },
+      { weight: "1kg", price: 2300, stock: 0 }
     ]
   },
   {
@@ -59,9 +59,9 @@ const initialProducts: Product[] = [
     image_url: "https://lh3.googleusercontent.com/aida-public/AB6AXuBi1RI2BThysC0dJfCYLn6u7i-LHLKQv6877RwoYAgeSE7gbC_D_keLjhssHoOqurYKAtm0Ysgj53vpfVlHl5HCDmTUXeiVyuz50ahbE8lW0b4htzx28aIUF2IyPEWqZKWhcTwBrMRGaZpG8vcudCyU5bJ9LDAM91kj-ygWGO_oUdBaFoe4YPPses8XHxpPKVCRw-FsX_yd8B4xSEtQ3bB7E4XBQpQKmXRGHk9ssMlnz2T1oKyuPqWudDF47a305g2Sth6rAE6u",
     origin: "California, USA",
     variants: [
-      { weight: "250g", price: 9.99, stock: 240 },
-      { weight: "500g", price: 17.99, stock: 110 },
-      { weight: "1kg", price: 32.99, stock: 95 }
+      { weight: "250g", price: 350, stock: 240 },
+      { weight: "500g", price: 650, stock: 110 },
+      { weight: "1kg", price: 1200, stock: 95 }
     ]
   },
   {
@@ -73,9 +73,9 @@ const initialProducts: Product[] = [
     image_url: "https://lh3.googleusercontent.com/aida/AP1WRLsF4OpWDZ19gsKGTbeyKyoKwcMoDljzPa2EngO4cq2TgxrB7Ek2dQuyNr0D9gHqPWIUhc6SFj_0ueOS_tAHmmILwunxeoGr6pmyl_PgH10cVSmBqJVGTaQIhudLLHNZJSOf8AoEvVV3IrlVM_TuSKQ6-LNjJ3gfJEo1iJ56MsulJRwl0Fr9RBlWJCo44SpL3vVjpgDWyUCwFKf9YpauBJGGySUXBsyS2RnabzH4Zx1bPXxe3PKCtcfp",
     origin: "Goa, India",
     variants: [
-      { weight: "250g", price: 10.99, stock: 150 },
-      { weight: "500g", price: 19.99, stock: 90 },
-      { weight: "1kg", price: 36.99, stock: 45 }
+      { weight: "250g", price: 380, stock: 150 },
+      { weight: "500g", price: 720, stock: 90 },
+      { weight: "1kg", price: 1350, stock: 45 }
     ]
   },
   {
@@ -87,9 +87,9 @@ const initialProducts: Product[] = [
     image_url: "https://lh3.googleusercontent.com/aida-public/AB6AXuC8w50Uh6StssQNUiIC93hweY20ih9LA62D957Zbu56Zv7ZfIemyLEs-yyj-fo9dW9ULfWjTk1KrstJpwMVkFEZbW-d2HvHCZcpPS2_gvffSGBr0wkc1dVQ_6hFXP2r59rwe74RcWkzllBz-6yPFw9XXieixhW8HmvWWmyVwAGO509h6BMZEAa3f3Hffe4dyiGoh-2WmUosxET7SeuF7vKGXcK6gFyxX95_GH7XeZtCwf_kaTQnLqsAcg42lL-I-uRPdftAosbB",
     origin: "Malatya, Turkey",
     variants: [
-      { weight: "250g", price: 7.99, stock: 180 },
-      { weight: "500g", price: 14.99, stock: 95 },
-      { weight: "1kg", price: 26.99, stock: 30 }
+      { weight: "250g", price: 280, stock: 180 },
+      { weight: "500g", price: 520, stock: 95 },
+      { weight: "1kg", price: 980, stock: 30 }
     ]
   },
   {
@@ -101,9 +101,9 @@ const initialProducts: Product[] = [
     image_url: "https://lh3.googleusercontent.com/aida-public/AB6AXuBi1RI2BThysC0dJfCYLn6u7i-LHLKQv6877RwoYAgeSE7gbC_D_keLjhssHoOqurYKAtm0Ysgj53vpfVlHl5HCDmTUXeiVyuz50ahbE8lW0b4htzx28aIUF2IyPEWqZKWhcTwBrMRGaZpG8vcudCyU5bJ9LDAM91kj-ygWGO_oUdBaFoe4YPPses8XHxpPKVCRw-FsX_yd8B4xSEtQ3bB7E4XBQpQKmXRGHk9ssMlnz2T1oKyuPqWudDF47a305g2Sth6rAE6u",
     origin: "Jordan Valley",
     variants: [
-      { weight: "250g", price: 11.99, stock: 140 },
-      { weight: "500g", price: 21.99, stock: 75 },
-      { weight: "1kg", price: 39.99, stock: 25 }
+      { weight: "250g", price: 450, stock: 140 },
+      { weight: "500g", price: 850, stock: 75 },
+      { weight: "1kg", price: 1600, stock: 25 }
     ]
   }
 ];
@@ -371,7 +371,7 @@ export default function AdminInventory() {
                         {p.variants.map((v) => (
                           <div key={v.weight} className="flex gap-sm text-xs items-center font-medium">
                             <span className="w-8 font-bold text-on-surface">{v.weight}:</span>
-                            <span className="w-16 text-primary font-bold">${v.price.toFixed(2)}</span>
+                            <span className="w-16 text-primary font-bold">₹{v.price}</span>
                             <span
                               className={`px-2 py-0.5 rounded text-[10px] font-bold ${
                                 v.stock === 0
@@ -494,7 +494,7 @@ export default function AdminInventory() {
                 <div className="grid grid-cols-3 gap-sm items-center">
                   <span className="font-sans text-sm font-bold text-on-surface-variant">250g tier</span>
                   <div className="space-y-xs">
-                    <label className="text-[10px] uppercase font-bold text-on-surface-variant">Price ($)</label>
+                    <label className="text-[10px] uppercase font-bold text-on-surface-variant">Price (₹)</label>
                     <input
                       type="number"
                       step="0.01"

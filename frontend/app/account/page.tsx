@@ -39,15 +39,7 @@ function AccountContent() {
       setTimeout(() => setOrders(parsed), 0);
     } else {
       // Default initial orders
-      const initialOrders: Order[] = [
-        {
-          id: "ORD-928134",
-          date: "06/20/2026",
-          total: "34.97",
-          status: "Delivered",
-          items: ["1 x Premium Roasted Almonds (500g)", "1 x Green Cardamom Pods (250g)"]
-        }
-      ];
+      const initialOrders: Order[] = [];
       localStorage.setItem("mock_orders", JSON.stringify(initialOrders));
       setTimeout(() => setOrders(initialOrders), 0);
     }
@@ -282,7 +274,7 @@ function AccountContent() {
                           Total Amount
                         </span>
                         <span className="font-serif text-headline-md font-bold text-primary block">
-                          ${order.total}
+                          ₹{order.total}
                         </span>
                       </div>
 

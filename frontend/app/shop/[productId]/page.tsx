@@ -40,9 +40,9 @@ const mockProducts: Product[] = [
     sourcingInfo: "Our Malabar Pepper is harvested by hand in Wayanad, Kerala. The vines are grown alongside coffee and cardamom, creating a bio-diverse ecosystem that yields peppercorns of unmatched purity.",
     nutritionalInfo: "100% Whole Black Pepper. Free from chemical pesticides and fillers. Volatile oil content > 3.5%.",
     variants: [
-      { weight: "250g", price: 8.99 },
-      { weight: "500g", price: 15.99 },
-      { weight: "1kg", price: 28.99 }
+      { weight: "250g", price: 250 },
+      { weight: "500g", price: 480 },
+      { weight: "1kg", price: 900 }
     ]
   },
   {
@@ -57,9 +57,9 @@ const mockProducts: Product[] = [
     sourcingInfo: "Grown in shaded forest canopies in Idukki, Kerala. We work with local smallholders who employ age-old sorting methods to select only Grade-A pods (8mm+ size).",
     nutritionalInfo: "100% Pure Green Cardamom Pods. No artificial coloring or preservatives.",
     variants: [
-      { weight: "250g", price: 12.99 },
-      { weight: "500g", price: 22.99 },
-      { weight: "1kg", price: 42.99 }
+      { weight: "250g", price: 650 },
+      { weight: "500g", price: 1200 },
+      { weight: "1kg", price: 2300 }
     ]
   },
   {
@@ -74,9 +74,9 @@ const mockProducts: Product[] = [
     sourcingInfo: "Sourced from family-run almond orchards in California's Central Valley, committed to water-efficient agricultural practices.",
     nutritionalInfo: "Almonds, Sea Salt. Contains nuts. Protein: 6g per 28g serving.",
     variants: [
-      { weight: "250g", price: 9.99 },
-      { weight: "500g", price: 17.99 },
-      { weight: "1kg", price: 32.99 }
+      { weight: "250g", price: 350 },
+      { weight: "500g", price: 650 },
+      { weight: "1kg", price: 1200 }
     ]
   },
   {
@@ -91,9 +91,9 @@ const mockProducts: Product[] = [
     sourcingInfo: "Grown along the Goan coastline in fertile sandy soil. Processed in local, employee-owned co-ops that handle the shelling and drying manually.",
     nutritionalInfo: "100% Raw Cashew Nuts (Grade W180). Contains nuts.",
     variants: [
-      { weight: "250g", price: 10.99 },
-      { weight: "500g", price: 19.99 },
-      { weight: "1kg", price: 36.99 }
+      { weight: "250g", price: 380 },
+      { weight: "500g", price: 720 },
+      { weight: "1kg", price: 1350 }
     ]
   },
   {
@@ -108,9 +108,9 @@ const mockProducts: Product[] = [
     sourcingInfo: "Harvested in the mountain orchards of Malatya, Turkey, globally renowned for growing the sweetest and plumpest apricots.",
     nutritionalInfo: "100% Sun-Dried Apricots. Unsulfured, preservative-free.",
     variants: [
-      { weight: "250g", price: 7.99 },
-      { weight: "500g", price: 14.99 },
-      { weight: "1kg", price: 26.99 }
+      { weight: "250g", price: 280 },
+      { weight: "500g", price: 520 },
+      { weight: "1kg", price: 980 }
     ]
   },
   {
@@ -125,12 +125,13 @@ const mockProducts: Product[] = [
     sourcingInfo: "Cultivated in pesticide-free, sustainably irrigated organic farms along the Jordan Valley basin.",
     nutritionalInfo: "100% Organic Medjool Dates. Energy: 66 kcal per date. High in potassium and dietary fiber.",
     variants: [
-      { weight: "250g", price: 11.99 },
-      { weight: "500g", price: 21.99 },
-      { weight: "1kg", price: 39.99 }
+      { weight: "250g", price: 450 },
+      { weight: "500g", price: 850 },
+      { weight: "1kg", price: 1600 }
     ]
   }
 ];
+
 
 export default function ProductDetailPage() {
   const { productId } = useParams();
@@ -253,10 +254,10 @@ export default function ProductDetailPage() {
               {/* Price */}
               <div className="border-y border-outline-variant/10 py-md flex items-center justify-between">
                 <span className="font-serif text-[32px] font-bold text-primary">
-                  ${(selectedVariant.price * quantity).toFixed(2)}
+                  ₹{(selectedVariant.price * quantity).toFixed(2)}
                 </span>
                 <span className="font-sans text-body-md text-on-surface-variant font-medium">
-                  Unit Price: ${selectedVariant.price.toFixed(2)}
+                  Unit Price: ₹{selectedVariant.price.toFixed(2)}
                 </span>
               </div>
 

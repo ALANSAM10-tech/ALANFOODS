@@ -36,9 +36,9 @@ const mockProducts: Product[] = [
     rating: 4.9,
     origin: "Kerala, India",
     variants: [
-      { weight: "250g", price: 8.99 },
-      { weight: "500g", price: 15.99 },
-      { weight: "1kg", price: 28.99 }
+      { weight: "250g", price: 250 },
+      { weight: "500g", price: 480 },
+      { weight: "1kg", price: 900 }
     ]
   },
   {
@@ -51,9 +51,9 @@ const mockProducts: Product[] = [
     rating: 4.8,
     origin: "Kerala, India",
     variants: [
-      { weight: "250g", price: 12.99 },
-      { weight: "500g", price: 22.99 },
-      { weight: "1kg", price: 42.99 }
+      { weight: "250g", price: 650 },
+      { weight: "500g", price: 1200 },
+      { weight: "1kg", price: 2300 }
     ]
   },
   {
@@ -66,9 +66,9 @@ const mockProducts: Product[] = [
     rating: 4.7,
     origin: "California, USA",
     variants: [
-      { weight: "250g", price: 9.99 },
-      { weight: "500g", price: 17.99 },
-      { weight: "1kg", price: 32.99 }
+      { weight: "250g", price: 350 },
+      { weight: "500g", price: 650 },
+      { weight: "1kg", price: 1200 }
     ]
   },
   {
@@ -81,9 +81,9 @@ const mockProducts: Product[] = [
     rating: 4.9,
     origin: "Goa, India",
     variants: [
-      { weight: "250g", price: 10.99 },
-      { weight: "500g", price: 19.99 },
-      { weight: "1kg", price: 36.99 }
+      { weight: "250g", price: 380 },
+      { weight: "500g", price: 720 },
+      { weight: "1kg", price: 1350 }
     ]
   },
   {
@@ -96,9 +96,9 @@ const mockProducts: Product[] = [
     rating: 4.6,
     origin: "Malatya, Turkey",
     variants: [
-      { weight: "250g", price: 7.99 },
-      { weight: "500g", price: 14.99 },
-      { weight: "1kg", price: 26.99 }
+      { weight: "250g", price: 280 },
+      { weight: "500g", price: 520 },
+      { weight: "1kg", price: 980 }
     ]
   },
   {
@@ -111,11 +111,12 @@ const mockProducts: Product[] = [
     rating: 4.9,
     origin: "Jordan Valley",
     variants: [
-      { weight: "250g", price: 11.99 },
-      { weight: "500g", price: 21.99 },
-      { weight: "1kg", price: 39.99 }
+      { weight: "250g", price: 450 },
+      { weight: "500g", price: 850 },
+      { weight: "1kg", price: 1600 }
     ]
   }
+
 ];
 
 const categoryBanners = {
@@ -150,7 +151,7 @@ function ShopContent() {
   // State
   const [products, setProducts] = useState<Product[]>(mockProducts);
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [priceRange, setPriceRange] = useState<number>(50);
+  const [priceRange, setPriceRange] = useState<number>(3000);
   const [sortBy, setSortBy] = useState<string>("default");
   const [showFilters, setShowFilters] = useState<boolean>(false);
 
@@ -288,20 +289,20 @@ function ShopContent() {
             {/* Price Filter */}
             <div>
               <h3 className="font-sans text-label-md uppercase font-bold text-on-surface mb-sm tracking-wide">
-                Max Price: ${priceRange.toFixed(2)}
+                Max Price: ₹{priceRange}
               </h3>
               <input
                 type="range"
-                min="5"
-                max="50"
-                step="1"
+                min="100"
+                max="3000"
+                step="50"
                 value={priceRange}
                 onChange={(e) => setPriceRange(Number(e.target.value))}
                 className="w-full accent-primary bg-outline-variant/30 h-1.5 rounded-lg appearance-none cursor-pointer"
               />
               <div className="flex justify-between font-sans text-[11px] text-on-surface-variant mt-xs font-semibold">
-                <span>$5.00</span>
-                <span>$50.00</span>
+                <span>₹100</span>
+                <span>₹3000</span>
               </div>
             </div>
           </aside>
@@ -395,7 +396,7 @@ function ShopContent() {
                         <div className="space-y-sm">
                           <div className="flex justify-between items-center">
                             <span className="font-serif text-headline-md font-bold text-primary">
-                              ${currentVariant.price.toFixed(2)}
+                              ₹{currentVariant.price}
                             </span>
                             <div className="flex items-center gap-xs font-sans text-body-md font-bold text-on-surface">
                               <span className="material-symbols-outlined text-amber-500 text-[18px]" style={{ fontVariationSettings: '"FILL" 1' }}>

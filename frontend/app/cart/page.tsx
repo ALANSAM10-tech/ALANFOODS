@@ -22,26 +22,7 @@ export default function CartPage() {
   const router = useRouter();
   
   // State
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    {
-      id: "whole-malabar-pepper-250g",
-      name: "Whole Malabar Pepper",
-      categoryLabel: "Aromatic Spices",
-      image_url: "https://lh3.googleusercontent.com/aida-public/AB6AXuAshdTiRi-_UBhP-P8OMxRFOjHOuNXciAxdvzUd0NUw1rn93ecilcjqLzheMoN32l8jAthvHl2ESNhjmoE51r576Qz3jcxEZtUi9_y9uaG0ez2nSc0W7uJdnkaBz-OipwKG-66FaKLXPI71P3jSLmH5WF6ghVdXol1TLvny0lGzYLq37dBlHCzJ11Fur-eB7a0FgDUXeGTJulbSBE4gFR27WYFvAyE1F7EKoOYz3P8UjG5NN6XLsJ4P3cLezeZtbfYOJf7IdbIb",
-      weight: "250g",
-      price: 8.99,
-      quantity: 2
-    },
-    {
-      id: "king-cashews-500g",
-      name: "Artisanal Cashew Nuts",
-      categoryLabel: "Premium Nuts",
-      image_url: "https://lh3.googleusercontent.com/aida/AP1WRLsF4OpWDZ19gsKGTbeyKyoKwcMoDljzPa2EngO4cq2TgxrB7Ek2dQuyNr0D9gHqPWIUhc6SFj_0ueOS_tAHmmILwunxeoGr6pmyl_PgH10cVSmBqJVGTaQIhudLLHNZJSOf8AoEvVV3IrlVM_TuSKQ6-LNjJ3gfJEo1iJ56MsulJRwl0Fr9RBlWJCo44SpL3vVjpgDWyUCwFKf9YpauBJGGySUXBsyS2RnabzH4Zx1bPXxe3PKCtcfp",
-      weight: "500g",
-      price: 19.99,
-      quantity: 1
-    }
-  ]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -68,7 +49,7 @@ export default function CartPage() {
 
   // Calculations
   const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-  const shipping = subtotal > 35 ? 0 : subtotal === 0 ? 0 : 5.0;
+  const shipping = subtotal > 1000 ? 0 : subtotal === 0 ? 0 : 150.0;
   const tax = subtotal * 0.08;
   const total = subtotal + shipping + tax;
 
@@ -151,7 +132,7 @@ export default function CartPage() {
                         {item.name}
                       </h3>
                       <p className="font-sans text-xs text-on-surface-variant font-medium">
-                        Weight: {item.weight} | Price: ${item.price.toFixed(2)}
+                        Weight: {item.weight} | Price: ₹{item.price.toFixed(2)}
                       </p>
                     </div>
                   </div>
@@ -179,7 +160,7 @@ export default function CartPage() {
 
                     <div className="text-right min-w-[70px]">
                       <span className="font-serif text-headline-md font-bold text-primary">
-                        ${(item.price * item.quantity).toFixed(2)}
+                        ₹{(item.price * item.quantity).toFixed(2)}
                       </span>
                     </div>
                   </div>
@@ -350,19 +331,19 @@ export default function CartPage() {
                   <div className="bg-surface-container-low p-md rounded-xl space-y-sm font-sans text-body-md border border-outline-variant/10">
                     <div className="flex justify-between text-on-surface-variant font-medium">
                       <span>Subtotal</span>
-                      <span>${subtotal.toFixed(2)}</span>
+                      <span>₹{subtotal.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between text-on-surface-variant font-medium">
                       <span>Shipping</span>
-                      <span>{shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}</span>
+                      <span>{shipping === 0 ? "Free" : `₹${shipping.toFixed(2)}`}</span>
                     </div>
                     <div className="flex justify-between text-on-surface-variant font-medium">
                       <span>GST (8%)</span>
-                      <span>${tax.toFixed(2)}</span>
+                      <span>₹{tax.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between text-on-surface font-bold border-t border-outline-variant/10 pt-sm">
                       <span>Total</span>
-                      <span className="text-primary">${total.toFixed(2)}</span>
+                      <span className="text-primary">₹{total.toFixed(2)}</span>
                     </div>
                   </div>
 
