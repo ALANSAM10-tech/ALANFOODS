@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="w-full pt-xl pb-lg bg-surface-container-highest dark:bg-surface-container-lowest mt-auto border-t border-outline-variant/30">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop max-w-[1280px] mx-auto">
-        <div className="col-span-1 md:col-span-1">
+        <div className="col-span-1 md:col-span-1 mb-lg md:mb-0">
           <span className="font-serif text-headline-md text-primary dark:text-primary-container font-bold tracking-tight block mb-sm">
             ALAN FOODS
           </span>

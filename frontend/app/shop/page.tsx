@@ -151,6 +151,7 @@ function ShopContent() {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [priceRange, setPriceRange] = useState<number>(50);
   const [sortBy, setSortBy] = useState<string>("default");
+  const [showFilters, setShowFilters] = useState<boolean>(false);
 
   // Track weight selection per product
   const [selectedWeights, setSelectedWeights] = useState<{ [productId: string]: string }>({});
@@ -202,7 +203,7 @@ function ShopContent() {
 
       <main className="pt-24 pb-xl max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
         {/* Banner Section */}
-        <section className="relative rounded-xl overflow-hidden mb-lg h-[300px] flex items-center shadow-md">
+        <section className="relative rounded-xl overflow-hidden mb-lg h-[180px] md:h-[300px] flex items-center shadow-md">
           <div className="absolute inset-0 z-0">
             <div
               className="w-full h-full bg-cover bg-center transition-all duration-500"
@@ -211,15 +212,25 @@ function ShopContent() {
             <div className="absolute inset-0 bg-black/45"></div>
           </div>
           <div className="relative z-10 p-lg max-w-xl text-white">
-            <h1 className="font-serif text-display-lg font-bold mb-xs">{banner.title}</h1>
+            <h1 className="font-serif text-[24px] md:text-[48px] leading-tight font-bold mb-xs">{banner.title}</h1>
             <p className="font-sans text-body-md opacity-90 leading-relaxed">{banner.description}</p>
           </div>
         </section>
 
         {/* Layout: Sidebar + Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-lg">
+          {/* Mobile Filter Toggle */}
+          <div className="lg:hidden">
+            <button
+              onClick={() => setShowFilters(!showFilters)}
+              className="flex items-center justify-center gap-xs bg-surface-container-low border border-outline-variant/20 rounded-xl px-md py-sm font-sans text-label-md text-on-surface font-semibold w-full"
+            >
+              <span className="material-symbols-outlined text-[20px]">tune</span>
+              {showFilters ? "Hide Filters" : "Filters & Categories"}
+            </button>
+          </div>
           {/* Sidebar Filters */}
-          <aside className="space-y-lg bg-surface-container-low p-md rounded-2xl border border-outline-variant/10 h-fit">
+          <aside className={`space-y-lg bg-surface-container-low p-md rounded-2xl border border-outline-variant/10 h-fit lg:block ${showFilters ? 'block' : 'hidden'}`}>
             {/* Search Input (Mobile/Tablet) */}
             <div className="lg:hidden">
               <h3 className="font-sans text-label-md uppercase font-bold text-on-surface mb-sm">Search</h3>

@@ -10,12 +10,12 @@ export default function Home() {
       <main className="pt-20">
         {/* Hero Section */}
         <section className="relative min-h-[85vh] flex items-center overflow-hidden hero-pattern">
-          <div className="px-margin-mobile md:px-margin-desktop max-w-[1280px] mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-lg items-center py-xl">
+          <div className="px-margin-mobile md:px-margin-desktop max-w-[1280px] mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-lg items-center py-md md:py-xl">
             <div className="z-10 order-2 md:order-1">
               <div className="inline-block px-sm py-xs bg-secondary-container text-on-secondary-container font-sans text-label-sm rounded-full mb-md uppercase tracking-wider font-semibold">
                 AUTHENTIC &amp; ORGANIC
               </div>
-              <h1 className="font-serif text-display-lg text-on-surface mb-md leading-tight">
+              <h1 className="font-serif text-[32px] md:text-[48px] leading-[38px] md:leading-[56px] tracking-[-0.02em] text-on-surface mb-md">
                 Nature’s Best, <br />Delivered to Your <span className="text-primary">Table.</span>
               </h1>
               <p className="font-sans text-body-lg text-on-surface-variant mb-lg max-w-lg leading-relaxed">
@@ -109,7 +109,7 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
               {/* Category 1 */}
-              <Link href="/shop?category=SPICES" className="group relative overflow-hidden rounded-2xl aspect-[4/5] shadow-sm hover:shadow-xl transition-all cursor-pointer">
+              <Link href="/shop?category=SPICES" className="group relative overflow-hidden rounded-2xl aspect-[3/2] md:aspect-[4/5] shadow-sm hover:shadow-xl transition-all cursor-pointer">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
                 <img
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -125,7 +125,7 @@ export default function Home() {
                 </div>
               </Link>
               {/* Category 2 */}
-              <Link href="/shop?category=DRY_FRUITS" className="group relative overflow-hidden rounded-2xl aspect-[4/5] shadow-sm hover:shadow-xl transition-all cursor-pointer">
+              <Link href="/shop?category=DRY_FRUITS" className="group relative overflow-hidden rounded-2xl aspect-[3/2] md:aspect-[4/5] shadow-sm hover:shadow-xl transition-all cursor-pointer">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
                 <img
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -141,7 +141,7 @@ export default function Home() {
                 </div>
               </Link>
               {/* Category 3 */}
-              <Link href="/shop?category=NUTS" className="group relative overflow-hidden rounded-2xl aspect-[4/5] shadow-sm hover:shadow-xl transition-all cursor-pointer">
+              <Link href="/shop?category=NUTS" className="group relative overflow-hidden rounded-2xl aspect-[3/2] md:aspect-[4/5] shadow-sm hover:shadow-xl transition-all cursor-pointer">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
                 <img
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -175,13 +175,13 @@ export default function Home() {
               &quot;The quality of whole spices from ALAN FOODS is unmatched. These ground-ready pods and seeds make my kitchen smell like a spice market in Kerala every morning!&quot;
               <span className="block font-bold text-on-surface mt-sm not-italic font-sans text-body-md">— Aditi R., Executive Chef</span>
             </p>
-            <div className="max-w-md mx-auto flex gap-xs">
+            <div className="max-w-md mx-auto flex flex-col sm:flex-row gap-xs">
               <input
                 className="flex-1 bg-white border border-outline-variant/40 rounded-lg px-md py-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all font-sans text-body-md text-on-surface"
                 placeholder="Your Email Address"
                 type="email"
               />
-              <button className="bg-primary text-white px-lg py-sm font-sans text-label-md rounded-lg hover:brightness-110 shadow-sm active:scale-95 transition-all font-semibold">
+              <button className="bg-primary text-white px-lg py-sm font-sans text-label-md rounded-lg hover:brightness-110 shadow-sm active:scale-95 transition-all font-semibold whitespace-nowrap">
                 Join Us
               </button>
             </div>

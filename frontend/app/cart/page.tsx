@@ -131,48 +131,54 @@ export default function CartPage() {
               {cartItems.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-white p-md rounded-2xl border border-outline-variant/10 shadow-sm flex gap-md items-center"
+                  className="bg-white p-md rounded-2xl border border-outline-variant/10 shadow-sm flex flex-col sm:flex-row gap-md sm:items-center"
                 >
-                  <img
-                    src={item.image_url}
-                    alt={item.name}
-                    className="w-20 h-20 object-cover rounded-xl bg-surface-container-low"
-                  />
-                  <div className="flex-1 min-w-0">
-                    <span className="font-sans text-[10px] uppercase font-bold text-on-surface-variant">
-                      {item.categoryLabel}
-                    </span>
-                    <h3 className="font-serif text-headline-md font-bold text-on-surface truncate">
-                      {item.name}
-                    </h3>
-                    <p className="font-sans text-xs text-on-surface-variant font-medium">
-                      Weight: {item.weight} | Price: ${item.price.toFixed(2)}
-                    </p>
-                  </div>
-                  
-                  {/* Quantity controls */}
-                  <div className="flex items-center border border-outline-variant/30 rounded-lg overflow-hidden bg-white shadow-sm">
-                    <button
-                      onClick={() => updateQuantity(item.id, -1)}
-                      className="px-2 py-1 hover:bg-surface-container text-on-surface font-bold text-xs"
-                    >
-                      -
-                    </button>
-                    <span className="px-3 font-sans text-xs text-on-surface font-bold">
-                      {item.quantity}
-                    </span>
-                    <button
-                      onClick={() => updateQuantity(item.id, 1)}
-                      className="px-2 py-1 hover:bg-surface-container text-on-surface font-bold text-xs"
-                    >
-                      +
-                    </button>
+                  {/* Image + Info */}
+                  <div className="flex gap-md items-center flex-1 min-w-0">
+                    <img
+                      src={item.image_url}
+                      alt={item.name}
+                      className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl bg-surface-container-low flex-shrink-0"
+                    />
+                    <div className="flex-1 min-w-0">
+                      <span className="font-sans text-[10px] uppercase font-bold text-on-surface-variant">
+                        {item.categoryLabel}
+                      </span>
+                      <h3 className="font-serif text-headline-md font-bold text-on-surface truncate">
+                        {item.name}
+                      </h3>
+                      <p className="font-sans text-xs text-on-surface-variant font-medium">
+                        Weight: {item.weight} | Price: ${item.price.toFixed(2)}
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="text-right pl-md min-w-[70px]">
-                    <span className="font-serif text-headline-md font-bold text-primary">
-                      ${(item.price * item.quantity).toFixed(2)}
-                    </span>
+                  {/* Qty + Price row */}
+                  <div className="flex items-center justify-between sm:justify-end gap-md">
+                    {/* Quantity controls */}
+                    <div className="flex items-center border border-outline-variant/30 rounded-lg overflow-hidden bg-white shadow-sm">
+                      <button
+                        onClick={() => updateQuantity(item.id, -1)}
+                        className="px-2 py-1 hover:bg-surface-container text-on-surface font-bold text-xs"
+                      >
+                        -
+                      </button>
+                      <span className="px-3 font-sans text-xs text-on-surface font-bold">
+                        {item.quantity}
+                      </span>
+                      <button
+                        onClick={() => updateQuantity(item.id, 1)}
+                        className="px-2 py-1 hover:bg-surface-container text-on-surface font-bold text-xs"
+                      >
+                        +
+                      </button>
+                    </div>
+
+                    <div className="text-right min-w-[70px]">
+                      <span className="font-serif text-headline-md font-bold text-primary">
+                        ${(item.price * item.quantity).toFixed(2)}
+                      </span>
+                    </div>
                   </div>
                 </div>
               ))}
