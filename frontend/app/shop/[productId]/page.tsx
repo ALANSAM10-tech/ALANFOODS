@@ -144,11 +144,13 @@ export default function ProductDetailPage() {
   // Load from localStorage
   useEffect(() => {
     const saved = localStorage.getItem("mock_products");
-    const db = saved ? JSON.parse(saved) : mockProducts;
-    const found = db.find((p: any) => p.id === productId);
+    const db: Product[] = saved ? JSON.parse(saved) : mockProducts;
+    const found = db.find((p: Product) => p.id === productId);
     if (found) {
-      setProduct(found);
-      setSelectedWeight(found.variants[0]?.weight || "");
+      setTimeout(() => {
+        setProduct(found);
+        setSelectedWeight(found.variants[0]?.weight || "");
+      }, 0);
     }
   }, [productId]);
 

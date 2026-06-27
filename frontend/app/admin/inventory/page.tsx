@@ -133,9 +133,10 @@ export default function AdminInventory() {
   useEffect(() => {
     const saved = localStorage.getItem("mock_products");
     if (saved) {
-      setProducts(JSON.parse(saved));
+      const parsed = JSON.parse(saved);
+      setTimeout(() => setProducts(parsed), 0);
     } else {
-      setProducts(initialProducts);
+      setTimeout(() => setProducts(initialProducts), 0);
       localStorage.setItem("mock_products", JSON.stringify(initialProducts));
     }
   }, []);

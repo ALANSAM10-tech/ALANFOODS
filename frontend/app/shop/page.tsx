@@ -158,7 +158,8 @@ function ShopContent() {
   useEffect(() => {
     const saved = localStorage.getItem("mock_products");
     if (saved) {
-      setProducts(JSON.parse(saved));
+      const parsed = JSON.parse(saved);
+      setTimeout(() => setProducts(parsed), 0);
     }
   }, []);
 
